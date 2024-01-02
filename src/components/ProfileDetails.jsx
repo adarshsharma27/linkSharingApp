@@ -38,7 +38,7 @@ const ProfileDetails = () => {
                 <div className="relative my-2">
                   <input
                     type="text"
-                    className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-sm outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter First Name"
                   />
 
@@ -55,7 +55,7 @@ const ProfileDetails = () => {
                 <div className="relative my-2">
                   <input
                     type="text"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Last Name"
                   />
 
@@ -72,7 +72,7 @@ const ProfileDetails = () => {
                 <div className="relative my-2">
                   <input
                     type="email"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Please Enter Email"
                   />
 
@@ -89,7 +89,7 @@ const ProfileDetails = () => {
                 <div className="flex items-center justify-center w-full">
                   <label
                     for="dropzone-file"
-                    className="flex flex-col items-center justify-center w-full h-54 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                    className="flex flex-col items-center justify-center w-full h-54 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 hover:border-indigo-600 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     <RiUploadCloud2Fill  size={30} className="text-indigo-600"/>

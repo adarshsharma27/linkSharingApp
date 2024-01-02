@@ -42,7 +42,7 @@ const ProfileLinks = () => {
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Github Url"
                   />
 
@@ -59,7 +59,7 @@ const ProfileLinks = () => {
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter LinkedIn Url"
                   />
 
@@ -76,7 +76,7 @@ const ProfileLinks = () => {
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Twitter Url"
                   />
 
@@ -93,7 +93,7 @@ const ProfileLinks = () => {
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Facebook Url"
                   />
 
