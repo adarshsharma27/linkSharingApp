@@ -1,5 +1,10 @@
 import React from "react";
-
+import {
+  FaSquareFacebook,
+  FaYoutube,
+  FaLinkedin,
+  FaGithub,
+} from "react-icons/fa6";
 const ProfileLinks = () => {
   return (
     <>
@@ -29,7 +34,7 @@ const ProfileLinks = () => {
             <div className="mx-auto mb-0 mt-8 max-w-lg space-y-4">
               <div>
                 <label
-                  for="email"
+                  for="github"
                   className="text-sm font-medium text-gray-600"
                 >
                   Link GitHub#
@@ -42,24 +47,11 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-gray-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                      />
-                    </svg>
+                    <FaGithub size={20} />
                   </span>
                 </div>
                 <label
-                  for="email"
+                  for="linkedin"
                   className="text-sm font-medium text-gray-600"
                 >
                   Link LinkedIn#
@@ -72,24 +64,28 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-gray-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                      />
-                    </svg>
+                    <FaLinkedin size={20} className="text-[#0A66C2]" />
                   </span>
                 </div>
                 <label
-                  for="email"
+                  for="youtube"
+                  className="text-sm font-medium text-gray-600"
+                >
+                  Link Youtube#
+                </label>
+                <div className="relative my-2">
+                  <input
+                    type="url"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md"
+                    placeholder="Enter Twitter Url"
+                  />
+
+                  <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                    <FaYoutube size={20} className="text-[#FF0000]" />
+                  </span>
+                </div>
+                <label
+                  for="facebook"
                   className="text-sm font-medium text-gray-600"
                 >
                   Link Facebook#
@@ -102,50 +98,7 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-gray-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                      />
-                    </svg>
-                  </span>
-                </div>
-                <label
-                  for="email"
-                  className="text-sm font-medium text-gray-600"
-                >
-                  Link Twitter#
-                </label>
-                <div className="relative my-2">
-                  <input
-                    type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md"
-                    placeholder="Enter Twitter Url"
-                  />
-
-                  <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-gray-400"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                      />
-                    </svg>
+                    <FaSquareFacebook size={20} className="text-[#1977F3] " />
                   </span>
                 </div>
               </div>
