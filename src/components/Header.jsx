@@ -18,25 +18,23 @@ const Header = () => {
             <div className="hidden md:block">
               <nav aria-label="Global">
                 <ul className="flex items-center gap-6 text-base">
-                  <li className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded">
-                    <RiLinksFill size={20} className="hover:text-indigo-600"/>
+                  <li>
                     <NavLink
-                      className="text-gray-600 transition hover:text-indigo-600"
+                     className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded active active:bg-slate-200 active:text-indigo-600"
                       to="/"
                     >
-                      {" "}
-                      Links{" "}
+                    <RiLinksFill size={20} className="hover:text-indigo-600"/>
+                      Links
                     </NavLink>
                   </li>
 
-                  <li className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded">
-                    <RiAccountPinCircleLine size={20} />
+                  <li>
                     <NavLink
-                      className="text-gray-600 transition hover:text-indigo-600"
+                      className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
                       to="/profileDetails"
                     >
-                      {" "}
-                      Profile Details{" "}
+                    <RiAccountPinCircleLine size={20} />
+                      Profile Details
                     </NavLink>
                   </li>
                 </ul>
