@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 import { RiLinksFill, RiAccountPinCircleLine } from "react-icons/ri";
 
 const Header = () => {
@@ -9,10 +9,10 @@ const Header = () => {
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="md:flex md:items-center md:gap-12">
-              <NavLink className="flex font-bold text-indigo-600" to="/">
+              <Link className="flex font-bold text-indigo-600" to="/">
                 <span className="sr-only">Home</span>
                 <RiLinksFill size={30} /> <span>SimpleShare</span>
-              </NavLink>
+              </Link>
             </div>
 
             <div className="hidden md:block">
@@ -20,7 +20,7 @@ const Header = () => {
                 <ul className="flex items-center gap-6 text-base">
                   <li>
                     <NavLink
-                     className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded active active:bg-slate-200 active:text-indigo-600"
+                     className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
                       to="/"
                     >
                     <RiLinksFill size={20} className="hover:text-indigo-600"/>
@@ -30,7 +30,7 @@ const Header = () => {
 
                   <li>
                     <NavLink
-                      className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
+                      className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounde"
                       to="/profileDetails"
                     >
                     <RiAccountPinCircleLine size={20} />
