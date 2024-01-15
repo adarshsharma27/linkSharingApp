@@ -8,8 +8,8 @@ import {
 const ProfileLinks = () => {
   return (
     <>
-      <div class="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-6 p-4 font-poppins">
-        <div class="p-6 rounded-lg card-shadow-custom">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-6 p-4 font-poppins">
+        <div className="p-6 rounded-lg card-shadow-custom">
           <div className="p-16">
             <img
               alt="profileLinks"
@@ -19,13 +19,13 @@ const ProfileLinks = () => {
           </div>
         </div>
         <div>
-          <div class="p-6 rounded-lg card-shadow-custom">
-            <div class="mx-auto max-w-lg text-left">
-              <h1 class="text-2xl font-bold sm:text-2xl">
+          <div className="p-6 rounded-lg card-shadow-custom">
+            <div className="mx-auto max-w-lg text-left">
+              <h1 className="text-2xl font-bold sm:text-2xl">
                 Customize Your Links!
               </h1>
 
-              <p class="mt-2 text-gray-500">
+              <p className="mt-2 text-gray-500">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
                 libero nulla eaque error neque ipsa culpa autem, at itaque
                 nostrum!
@@ -34,7 +34,7 @@ const ProfileLinks = () => {
             <div className="mx-auto mb-0 mt-8 max-w-lg space-y-4">
               <div>
                 <label
-                  for="github"
+                  htmlFor="github"
                   className="text-sm font-medium text-gray-600"
                 >
                   Link GitHub#
@@ -51,7 +51,7 @@ const ProfileLinks = () => {
                   </span>
                 </div>
                 <label
-                  for="linkedin"
+                  htmlFor="linkedin"
                   className="text-sm font-medium text-gray-600"
                 >
                   Link LinkedIn#
@@ -68,7 +68,7 @@ const ProfileLinks = () => {
                   </span>
                 </div>
                 <label
-                  for="youtube"
+                  htmlFor="youtube"
                   className="text-sm font-medium text-gray-600"
                 >
                   Link Youtube#
@@ -85,7 +85,7 @@ const ProfileLinks = () => {
                   </span>
                 </div>
                 <label
-                  for="facebook"
+                  htmlFor="facebook"
                   className="text-sm font-medium text-gray-600"
                 >
                   Link Facebook#
@@ -104,20 +104,20 @@ const ProfileLinks = () => {
               </div>
 
               <div className="flex items-center justify-between">
-                <button class="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
-                  <span class="text-sm font-medium"> Save </span>
+                <button className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+                  <span className="text-sm font-medium"> Save </span>
 
                   <svg
-                    class="h-5 w-5 rtl:rotate-180"
+                    className="h-5 w-5 rtl:rotate-180"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
                   </svg>
