@@ -8,6 +8,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaInstagram,
+  FaSquareTwitter,
 } from "react-icons/fa6";
 const ProfileLinks = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,9 @@ const ProfileLinks = () => {
   const [linkedInUrl, setLinkedInUrl] = useState();
   const [instaGramUrl, setInstaGramUrl] = useState();
   const [faceBookUrl, setFaceBookUrl] = useState();
+  const [twitterUrl, setTwitterUrl] = useState();
   const addProfileLinks = () => {
-    dispatch(addUserLinks({ gitHubUrl, linkedInUrl, instaGramUrl, faceBookUrl }));
+    dispatch(addUserLinks({ gitHubUrl, linkedInUrl, instaGramUrl, faceBookUrl,twitterUrl}));
     navigate("/profileDetails");
   };
   return (
@@ -89,7 +91,7 @@ const ProfileLinks = () => {
                   htmlFor="youtube"
                   className="text-sm font-medium text-gray-600"
                 >
-                  Link Youtube#
+                  Link Instagram#
                 </label>
                 <div className="relative my-2">
                   <input
@@ -125,6 +127,27 @@ const ProfileLinks = () => {
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                     <FaSquareFacebook size={20} className="text-[#1977F3] " />
+                  </span>
+                </div>
+                <label
+                  htmlFor="facebook"
+                  className="text-sm font-medium text-gray-600"
+                >
+                  Link Twitter#
+                </label>
+                <div className="relative my-2">
+                  <input
+                    type="url"
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    placeholder="Enter Twitter Url"
+                    value={twitterUrl}
+                    onChange={(e) => {
+                      setTwitterUrl(e.target.value);
+                    }}
+                  />
+
+                  <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                    <FaSquareTwitter size={20} className="text-[#1d9bf0] " />
                   </span>
                 </div>
               </div>

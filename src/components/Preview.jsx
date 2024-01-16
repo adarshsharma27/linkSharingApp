@@ -7,6 +7,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaInstagram,
+  FaSquareTwitter,
 } from "react-icons/fa6";
 
 const Preview = () => {
@@ -113,6 +114,31 @@ const Preview = () => {
               >
                 <FaSquareFacebook size={20} />
                 <span className="text-sm font-medium"> Facebook </span>
+
+                <svg
+                  className="h-5 w-5 rtl:rotate-180"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div className="flex mt-4 md:mt-4">
+              <a
+                href={userProfileLinksDetails.profileLinks.twitterUrl}
+                className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1d9bf0] bg-[#1d9bf0]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                target="_blank"
+              >
+                <FaSquareTwitter size={20} />
+                <span className="text-sm font-medium"> Twitter </span>
 
                 <svg
                   className="h-5 w-5 rtl:rotate-180"
