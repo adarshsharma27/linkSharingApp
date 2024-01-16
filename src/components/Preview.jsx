@@ -6,6 +6,7 @@ import {
   FaYoutube,
   FaLinkedin,
   FaGithub,
+  FaInstagram,
 } from "react-icons/fa6";
 
 const Preview = () => {
@@ -81,12 +82,12 @@ const Preview = () => {
             </div>
             <div className="flex mt-4 md:mt-4">
               <a
-                href={userProfileLinksDetails.profileLinks.youTubeUrl}
-                className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#FF0000] bg-[#FF0000]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                href={userProfileLinksDetails.profileLinks.instaGramUrl}
+                className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#e4405f] bg-[#e4405f]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                 target="_blank"
               >
-                <FaYoutube size={20} />
-                <span className="text-sm font-medium"> Youtube </span>
+                <FaInstagram size={20} />
+                <span className="text-sm font-medium">Instagram</span>
 
                 <svg
                   className="h-5 w-5 rtl:rotate-180"

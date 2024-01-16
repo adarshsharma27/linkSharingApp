@@ -7,16 +7,17 @@ import {
   FaYoutube,
   FaLinkedin,
   FaGithub,
+  FaInstagram,
 } from "react-icons/fa6";
 const ProfileLinks = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [gitHubUrl, setGitHubUrl] = useState();
   const [linkedInUrl, setLinkedInUrl] = useState();
-  const [youTubeUrl, setYouTubeUrl] = useState();
+  const [instaGramUrl, setInstaGramUrl] = useState();
   const [faceBookUrl, setFaceBookUrl] = useState();
   const addProfileLinks = () => {
-    dispatch(addUserLinks({ gitHubUrl, linkedInUrl, youTubeUrl, faceBookUrl }));
+    dispatch(addUserLinks({ gitHubUrl, linkedInUrl, instaGramUrl, faceBookUrl }));
     navigate("/profileDetails");
   };
   return (
@@ -95,14 +96,14 @@ const ProfileLinks = () => {
                     type="url"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Twitter Url"
-                    value={youTubeUrl}
+                    value={instaGramUrl}
                     onChange={(e) => {
-                      setYouTubeUrl(e.target.value);
+                      setInstaGramUrl(e.target.value);
                     }}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <FaYoutube size={20} className="text-[#FF0000]" />
+                    <FaInstagram size={20} className="text-[#e4405f]" />
                   </span>
                 </div>
                 <label
