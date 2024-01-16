@@ -3,27 +3,33 @@ import { useSelector } from "react-redux";
 
 import {
   FaSquareFacebook,
-  FaYoutube,
   FaLinkedin,
   FaGithub,
   FaInstagram,
   FaSquareTwitter,
+  FaShare,
 } from "react-icons/fa6";
 
 const Preview = () => {
   const userProfileLinksDetails = useSelector((state) => state.profileReducer);
   console.log(userProfileLinksDetails);
 
+  const shareProfileUrl=()=>{
+    window.navigator.clipboard.writeText(window.location.href)
+  }
   return (
     <>
       <div className="lg:px-16 lg:py-6 p-4 font-poppins">
         <div className="w-full max-w-sm bg-white border mx-auto border-gray-100 rounded-lg card-shadow-custom">
-          <div className="flex flex-col items-center py-8">
+          <div className="flex flex-col items-center py-8 relative">
             <img
               className="w-24 h-24 mb-3 rounded-full shadow-lg border-4 border-indigo-600"
               src="https://avatars1.githubusercontent.com/u/37371998?v=4"
               alt="Bonnie image"
             />
+            <div className="bg-indigo-600 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
+              <FaShare size={22}  onClick={()=>shareProfileUrl()}/>
+            </div>
             <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white">
               {userProfileLinksDetails?.profileDetails?.firstName}{" "}
               {userProfileLinksDetails?.profileDetails?.lastName}

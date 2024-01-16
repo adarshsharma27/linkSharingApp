@@ -4,7 +4,6 @@ import { addUserLinks } from "../features/profileSlice";
 import { useNavigate } from "react-router-dom";
 import {
   FaSquareFacebook,
-  FaYoutube,
   FaLinkedin,
   FaGithub,
   FaInstagram,
