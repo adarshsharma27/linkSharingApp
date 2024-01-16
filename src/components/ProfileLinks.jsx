@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUserLinks } from "../features/profileSlice";
+import { useNavigate } from "react-router-dom";
 import {
   FaSquareFacebook,
   FaYoutube,
@@ -6,6 +9,16 @@ import {
   FaGithub,
 } from "react-icons/fa6";
 const ProfileLinks = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [gitHubUrl, setGitHubUrl] = useState();
+  const [linkedInUrl, setLinkedInUrl] = useState();
+  const [youTubeUrl, setYouTubeUrl] = useState();
+  const [faceBookUrl, setFaceBookUrl] = useState();
+  const addProfileLinks = () => {
+    dispatch(addUserLinks({ gitHubUrl, linkedInUrl, youTubeUrl, faceBookUrl }));
+    navigate("/profileDetails");
+  };
   return (
     <>
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-6 p-4 font-poppins">
@@ -25,11 +38,7 @@ const ProfileLinks = () => {
                 Customize Your Links!
               </h1>
 
-              <p className="mt-2 text-gray-500">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                libero nulla eaque error neque ipsa culpa autem, at itaque
-                nostrum!
-              </p>
+              <p className="mt-2 text-gray-500">text</p>
             </div>
             <div className="mx-auto mb-0 mt-8 max-w-lg space-y-4">
               <div>
@@ -44,6 +53,10 @@ const ProfileLinks = () => {
                     type="url"
                     className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Github Url"
+                    value={gitHubUrl}
+                    onChange={(e) => {
+                      setGitHubUrl(e.target.value);
+                    }}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -61,6 +74,10 @@ const ProfileLinks = () => {
                     type="url"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter LinkedIn Url"
+                    value={linkedInUrl}
+                    onChange={(e) => {
+                      setLinkedInUrl(e.target.value);
+                    }}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -78,6 +95,10 @@ const ProfileLinks = () => {
                     type="url"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Twitter Url"
+                    value={youTubeUrl}
+                    onChange={(e) => {
+                      setYouTubeUrl(e.target.value);
+                    }}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -95,6 +116,10 @@ const ProfileLinks = () => {
                     type="url"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Facebook Url"
+                    value={faceBookUrl}
+                    onChange={(e) => {
+                      setFaceBookUrl(e.target.value);
+                    }}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -104,7 +129,10 @@ const ProfileLinks = () => {
               </div>
 
               <div className="flex items-center justify-between">
-                <button className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500">
+                <button
+                  className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  onClick={() => addProfileLinks()}
+                >
                   <span className="text-sm font-medium"> Save </span>
 
                   <svg
