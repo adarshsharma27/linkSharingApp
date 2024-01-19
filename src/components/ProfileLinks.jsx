@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addUserLinks } from "../features/profileSlice";
 import { useNavigate } from "react-router-dom";
 import {
@@ -12,11 +12,20 @@ import {
 const ProfileLinks = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [gitHubUrl, setGitHubUrl] = useState();
+  const [gitHubUrl, setGitHubUrl] = useState("");
   const [linkedInUrl, setLinkedInUrl] = useState();
   const [instaGramUrl, setInstaGramUrl] = useState();
   const [faceBookUrl, setFaceBookUrl] = useState();
   const [twitterUrl, setTwitterUrl] = useState();
+  
+  const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
+  useEffect(() => {
+    setGitHubUrl(userProfileLinksDetails?.profileLinks?.gitHubUrl);
+    setLinkedInUrl(userProfileLinksDetails?.profileLinks?.linkedInUrl);
+    setInstaGramUrl(userProfileLinksDetails?.profileLinks?.instaGramUrl);
+    setFaceBookUrl(userProfileLinksDetails?.profileLinks?.faceBookUrl);
+    setTwitterUrl(userProfileLinksDetails?.profileLinks?.twitterUrl);
+  }, [userProfileLinksDetails]);
   const addProfileLinks = () => {
     dispatch(addUserLinks({ gitHubUrl, linkedInUrl, instaGramUrl, faceBookUrl,twitterUrl}));
     navigate("/profileDetails");

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addUserDetails } from "../features/profileSlice";
 import { useNavigate } from "react-router-dom";
 import {
@@ -15,7 +15,12 @@ const ProfileDetails = () => {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
-
+  const userProfileDetails = useSelector((state) => state?.profileReducer);
+  useEffect(() => {
+    setFirstName(userProfileDetails?.profileDetails?.firstName);
+    setLastName(userProfileDetails?.profileDetails?.lastName);
+    setEmail(userProfileDetails?.profileDetails?.email);
+  }, [userProfileDetails]);
   const addProfileDetails = () => {
     dispatch(addUserDetails({ firstName, lastName, email }));
     navigate("/preview");
