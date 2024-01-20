@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Preview from "./components/Preview";
 import ProfileDetails from "./components/ProfileDetails";
+import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/profileDetails" element={<ProfileDetails />} />
         <Route path="/preview" element={<Preview />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
       </Routes>
       <Footer />
     </>
