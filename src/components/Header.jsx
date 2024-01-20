@@ -98,8 +98,8 @@ const Header = () => {
           <div
             className={
               open === true
-                ? "md:hidden flex flex-col fixed right-0 top-0 w-full h-screen transition-all duration-1000 ease-in-out z-50"
-                : "md:hidden flex flex-col fixed right-[-380px] top-0 w-full h-screen transition-all duration-1000 ease-in-out z-50"
+                ? "md:hidden flex flex-col fixed right-0 top-0 w-full h-screen transition-all duration-1000 ease-in-out z-40"
+                : "md:hidden flex flex-col fixed right-[-380px] top-0 w-full h-screen transition-all duration-1000 ease-in-out z-40"
             }
           >
             <nav aria-label="Global">
