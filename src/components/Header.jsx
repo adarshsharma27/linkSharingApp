@@ -126,6 +126,7 @@ const Header = () => {
                   <NavLink
                     className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
                     to="/login"
+                    onClick={() => toggleNavigation()}
                   >
                     Login
                   </NavLink>
@@ -134,6 +135,7 @@ const Header = () => {
                   <NavLink
                     className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
                     to="/signup"
+                    onClick={() => toggleNavigation()}
                   >
                     Sign Up
                   </NavLink>
