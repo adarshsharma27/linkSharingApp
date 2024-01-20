@@ -38,7 +38,7 @@ const Header = () => {
 
                   <li>
                     <NavLink
-                      className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounde"
+                      className="flex gap-2 hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
                       to="/profileDetails"
                     >
                       <RiAccountPinCircleLine size={20} />
@@ -51,20 +51,20 @@ const Header = () => {
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <a
-                  className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                  href="/"
+                <NavLink
+                  className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
+                  to="/login"
                 >
                   Login
-                </a>
+                </NavLink>
 
                 <div className="hidden sm:flex">
-                  <a
-                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600"
-                    href="/"
+                  <NavLink
+                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
+                    to="/signup"
                   >
-                    Register
-                  </a>
+                    Sign Up
+                  </NavLink>
                 </div>
               </div>
             </div>
@@ -123,20 +123,20 @@ const Header = () => {
                 </NavLink>
 
                 <div className="p-2">
-                  <a
-                    className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow"
-                    href="/"
+                  <NavLink
+                    className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
+                    to="/login"
                   >
                     Login
-                  </a>
+                  </NavLink>
                 </div>
                 <div className="p-2">
-                  <a
-                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600"
-                    href="/"
+                  <NavLink
+                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
+                    to="/signup"
                   >
-                    Register
-                  </a>
+                    Sign Up
+                  </NavLink>
                 </div>
               </div>
             </nav>

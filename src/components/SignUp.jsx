@@ -80,7 +80,6 @@ const SignUp = () => {
                       // }}
                     />
                   </div>
-                </div>
               </div>
 
               <div className="flex items-center justify-between">
@@ -108,6 +107,7 @@ const SignUp = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
     </>
   );
