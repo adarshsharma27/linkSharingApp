@@ -62,6 +62,7 @@ const SignUp = () => {
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                     {/* <FaInstagram size={20} className="text-[#e4405f]" /> */}
                   </span>
+                  </div>
                   <label
                     htmlFor="Password"
                     className="text-sm font-medium text-gray-600"
@@ -108,7 +109,6 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };
