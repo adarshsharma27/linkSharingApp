@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { RiEyeOffFill, RiEyeFill } from "react-icons/ri";
 
 const LogIn = () => {
+  const [password, setPassword] = useState();
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <>
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-16 p-4 font-poppins">
@@ -49,17 +52,26 @@ const LogIn = () => {
                 </label>
                 <div className="relative my-2">
                   <input
-                    type="password"
-                    className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    type={showPassword ? "text" : "password"}
+                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Please Enter Password"
-                    // value={gitHubUrl}
-                    // onChange={(e) => {
-                    //   setGitHubUrl(e.target.value);
-                    // }}
+                    value={password}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                   />
 
-                  <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    {/* <FaGithub size={20} /> */}
+                  <span
+                    className="absolute inset-y-0 end-0 grid place-content-center px-4 hover:cursor-pointer"
+                    onClick={() => {
+                      setShowPassword(!showPassword);
+                    }}
+                  >
+                    {showPassword == true ? (
+                      <RiEyeOffFill size={20} className="text-indigo-600" />
+                    ) : (
+                      <RiEyeFill size={20} className="text-indigo-600" />
+                    )}
                   </span>
                 </div>
               </div>
