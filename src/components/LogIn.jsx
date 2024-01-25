@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiEyeOffFill, RiEyeFill } from "react-icons/ri";
 
 const LogIn = () => {
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
+  useEffect(() => {
+    if (password === "") {
+      setShowPassword(false);
+    }
+  }, [password]);
   return (
     <>
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-16 p-4 font-poppins">
@@ -60,19 +65,20 @@ const LogIn = () => {
                       setPassword(e.target.value);
                     }}
                   />
-
-                  <span
-                    className="absolute inset-y-0 end-0 grid place-content-center px-4 hover:cursor-pointer"
-                    onClick={() => {
-                      setShowPassword(!showPassword);
-                    }}
-                  >
-                    {showPassword == true ? (
-                      <RiEyeOffFill size={20} className="text-indigo-600" />
-                    ) : (
-                      <RiEyeFill size={20} className="text-indigo-600" />
-                    )}
-                  </span>
+                  {password && (
+                    <span
+                      className="absolute inset-y-0 end-0 grid place-content-center px-4 hover:cursor-pointer"
+                      onClick={() => {
+                        setShowPassword(!showPassword);
+                      }}
+                    >
+                      {showPassword == true ? (
+                        <RiEyeOffFill size={20} className="text-indigo-600" />
+                      ) : (
+                        <RiEyeFill size={20} className="text-indigo-600" />
+                      )}
+                    </span>
+                  )}
                 </div>
               </div>
 
