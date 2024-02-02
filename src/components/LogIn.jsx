@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { RiEyeOffFill, RiEyeFill } from "react-icons/ri";
+import {
+  RiEyeOffFill,
+  RiEyeFill,
+  RiLockPasswordFill,
+  RiRecordMailFill,
+} from "react-icons/ri";
 
 const LogIn = () => {
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
   useEffect(() => {
@@ -39,14 +45,14 @@ const LogIn = () => {
                     type="email"
                     className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Please Enter Email"
-                    // value={instaGramUrl}
-                    // onChange={(e) => {
-                    //   setInstaGramUrl(e.target.value);
-                    // }}
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    {/* <FaInstagram size={20} className="text-[#e4405f]" /> */}
+                    <RiRecordMailFill size={20} className="text-indigo-600" />
                   </span>
                 </div>
                 <label
@@ -65,6 +71,14 @@ const LogIn = () => {
                       setPassword(e.target.value);
                     }}
                   />
+                  {!password && (
+                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                      <RiLockPasswordFill
+                        size={20}
+                        className="text-indigo-600"
+                      />
+                    </span>
+                  )}
                   {password && (
                     <span
                       className="absolute inset-y-0 end-0 grid place-content-center px-4 hover:cursor-pointer"
