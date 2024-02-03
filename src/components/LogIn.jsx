@@ -5,16 +5,72 @@ import {
   RiLockPasswordFill,
   RiRecordMailFill,
 } from "react-icons/ri";
+import { useDispatch } from "react-redux";
+import { logIn } from "../features/AuthenticationSlice";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { account } from "../config";
 
 const LogIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
+  const [emailErr, setEmailErr] = useState(false);
+  const [passwordErr, setPasswordErr] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     if (password === "") {
       setShowPassword(false);
     }
   }, [password]);
+  const LogIn = async () => {
+    let emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      setEmailErr(true);
+      setPasswordErr(false);
+    } else if (!password || password.trim().length <= 8) {
+      setPasswordErr(true);
+      setEmailErr(false);
+    } else {
+      try {
+        const userData = await account.createEmailSession(email, password);
+        dispatch(logIn(userData));
+        toast.success("LoggedIn Successfully", {
+          duration: 4000,
+          position: "top-center",
+          style: {
+            background: "#fff",
+            color: "#252525",
+            padding: "20px",
+            fontWeight: "700",
+            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+            borderBottom: "3px solid #4F46E5",
+            borderRadius: "3px",
+            fontFamily: "Poppins, sans-serif",
+          },
+        });
+        setEmail("");
+        setPassword("");
+        navigate("/");
+      } catch (error) {
+        toast.error(error.message, {
+          duration: 4000,
+          position: "top-center",
+          style: {
+            background: "#fff",
+            color: "#252525",
+            padding: "20px",
+            fontWeight: "700",
+            boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
+            borderBottom: "3px solid #F17171",
+            borderRadius: "3px",
+            fontFamily: "Poppins, sans-serif",
+          },
+        });
+      }
+    }
+  };
   return (
     <>
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-16 p-4 font-poppins">
@@ -55,6 +111,13 @@ const LogIn = () => {
                     <RiRecordMailFill size={20} className="text-indigo-600" />
                   </span>
                 </div>
+                {emailErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-base font-semibold">
+                      Please Enter Email
+                    </span>
+                  </div>
+                )}
                 <label
                   htmlFor="name"
                   className="text-sm font-medium text-gray-600"
@@ -94,12 +157,20 @@ const LogIn = () => {
                     </span>
                   )}
                 </div>
+                {passwordErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-base font-semibold">
+                      Please Enter Password
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center justify-between">
                 <button
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                  //   onClick={() => addProfileLinks()}
+                  onClick={LogIn}
+                  disabled={emailErr || passwordErr}
                 >
                   <span className="text-sm font-medium"> LogIn </span>
 

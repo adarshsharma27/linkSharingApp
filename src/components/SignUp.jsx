@@ -6,17 +6,80 @@ import {
   RiRecordMailFill,
   RiLockPasswordFill,
 } from "react-icons/ri";
+import { ID, account } from "../config";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [showPassword, setShowPassword] = useState(false);
+  const [nameErr, setNameErr] = useState(false);
+  const [emailErr, setEmailErr] = useState(false);
+  const [passwordErr, setPasswordErr] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     if (password === "") {
       setShowPassword(false);
     }
   }, [password]);
+  const SignUp = async () => {
+    let emailRegex = /^\S+@\S+\.\S+$/;
+    let nameReg = /^[A-Za-z]*$/;
+    if (!name || !nameReg.test(name) || name.trim().length > 50) {
+      debugger;
+      setNameErr(true);
+      setEmailErr(false);
+      setPasswordErr(false);
+    } else if (!emailRegex.test(email)) {
+      setEmailErr(true);
+      setNameErr(false);
+      setPasswordErr(false);
+    } else if (!password || password.trim().length <= 8) {
+      setPasswordErr(true);
+      setNameErr(false);
+      setEmailErr(false);
+    } else {
+      try {
+        await account.create(ID.unique(), email, password, name);
+        setName("");
+        setEmail("");
+        setPassword("");
+        toast.success("SignUp Successfully", {
+          duration: 4000,
+          position: "top-center",
+          style: {
+            background: "#fff",
+            color: "#252525",
+            padding: "20px",
+            fontWeight: "700",
+            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+            borderBottom: "3px solid #4F46E5",
+            borderRadius: "3px",
+            fontFamily: "Poppins, sans-serif",
+          },
+        });
+
+        navigate("/login");
+      } catch (error) {
+        toast.error(error.message, {
+          duration: 4000,
+          position: "top-center",
+          style: {
+            background: "#fff",
+            color: "#252525",
+            padding: "20px",
+            fontWeight: "700",
+            boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
+            borderBottom: "3px solid #F17171",
+            borderRadius: "3px",
+            fontFamily: "Poppins, sans-serif",
+          },
+        });
+      }
+    }
+  };
   return (
     <>
       <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-4 p-4 font-poppins">
@@ -57,7 +120,13 @@ const SignUp = () => {
                     <RiUser6Fill size={20} className="text-indigo-600" />
                   </span>
                 </div>
-
+                {nameErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-base font-semibold">
+                      Please Enter Name
+                    </span>
+                  </div>
+                )}
                 <label
                   htmlFor="email"
                   className="text-sm font-medium text-gray-600"
@@ -79,6 +148,13 @@ const SignUp = () => {
                     <RiRecordMailFill size={20} className="text-indigo-600" />
                   </span>
                 </div>
+                {emailErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-base font-semibold">
+                      Please Enter Email
+                    </span>
+                  </div>
+                )}
                 <label
                   htmlFor="Password"
                   className="text-sm font-medium text-gray-600"
@@ -119,12 +195,20 @@ const SignUp = () => {
                     </span>
                   )}
                 </div>
+                {passwordErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-base font-semibold">
+                      Please Enter Password
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center justify-between">
                 <button
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                  //   onClick={() => addProfileLinks()}
+                  onClick={SignUp}
+                  disabled={nameErr || emailErr || passwordErr}
                 >
                   <span className="text-sm font-medium"> SignUp </span>
 
