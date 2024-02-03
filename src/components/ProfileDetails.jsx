@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserDetails } from "../features/profileSlice";
 import { useNavigate } from "react-router-dom";
+import { NotificationAudio } from "../utils/NotificationAudio";
 import {
   RiMailOpenFill,
   RiAccountPinCircleFill,
   RiAB,
   RiUploadCloud2Fill,
 } from "react-icons/ri";
+import toast from "react-hot-toast";
+import conf from "../conf/conf";
+import { ID, databases } from "../config";
 
 const ProfileDetails = () => {
   const dispatch = useDispatch();
@@ -16,14 +20,69 @@ const ProfileDetails = () => {
   const [lastName, setLastName] = useState();
   const [email, setEmail] = useState();
   const userProfileDetails = useSelector((state) => state?.profileReducer);
+  const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
   useEffect(() => {
     setFirstName(userProfileDetails?.profileDetails?.firstName);
     setLastName(userProfileDetails?.profileDetails?.lastName);
     setEmail(userProfileDetails?.profileDetails?.email);
   }, [userProfileDetails]);
-  const addProfileDetails = () => {
+  const gitHubUrl = userProfileLinksDetails?.profileLinks?.gitHubUrl;
+  const linkedInUrl = userProfileLinksDetails?.profileLinks?.linkedInUrl;
+  const instaGramUrl = userProfileLinksDetails?.profileLinks?.instaGramUrl;
+  const faceBookUrl = userProfileLinksDetails?.profileLinks?.faceBookUrl;
+  const twitterUrl = userProfileLinksDetails?.profileLinks?.twitterUrl;
+  const userLinksProfileDetails = async (e) => {
     dispatch(addUserDetails({ firstName, lastName, email }));
-    navigate("/preview");
+
+    try {
+      await databases.createDocument(
+        conf.databaseId,
+        conf.collectionId,
+        ID.unique(),
+        {
+          gitHubUrl,
+          linkedInUrl,
+          instaGramUrl,
+          faceBookUrl,
+          faceBookUrl,
+          twitterUrl,
+          firstName,
+          lastName,
+          email,
+        }
+      );
+      toast.success("Profile Created Successfully", {
+        duration: 4000,
+        position: "top-right",
+        style: {
+          background: "#fff",
+          color: "#252525",
+          padding: "20px",
+          fontWeight: "700",
+          boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+          borderBottom: "3px solid #4F46E5",
+          borderRadius: "3px",
+          fontFamily: "Poppins, sans-serif",
+        },
+      });
+      NotificationAudio();
+      navigate("/preview");
+    } catch (error) {
+      toast.error(error.message, {
+        duration: 4000,
+        position: "top-right",
+        style: {
+          background: "#fff",
+          color: "#252525",
+          padding: "20px",
+          fontWeight: "700",
+          boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
+          borderBottom: "3px solid #F17171",
+          borderRadius: "3px",
+          fontFamily: "Poppins, sans-serif",
+        },
+      });
+    }
   };
   return (
     <>
@@ -152,7 +211,7 @@ const ProfileDetails = () => {
               <div className="flex items-center justify-between">
                 <button
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                  onClick={() => addProfileDetails()}
+                  onClick={userLinksProfileDetails}
                 >
                   <span className="text-sm font-medium"> Save </span>
                   <svg
