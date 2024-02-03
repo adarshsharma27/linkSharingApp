@@ -48,7 +48,7 @@ const SignUp = () => {
         setPassword("");
         toast.success("SignUp Successfully", {
           duration: 4000,
-          position: "top-center",
+          position: "top-right",
           style: {
             background: "#fff",
             color: "#252525",
@@ -65,7 +65,7 @@ const SignUp = () => {
       } catch (error) {
         toast.error(error.message, {
           duration: 4000,
-          position: "top-center",
+          position: "top-right",
           style: {
             background: "#fff",
             color: "#252525",

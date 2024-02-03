@@ -38,7 +38,7 @@ const LogIn = () => {
         dispatch(logIn(userData));
         toast.success("LoggedIn Successfully", {
           duration: 4000,
-          position: "top-center",
+          position: "top-right",
           style: {
             background: "#fff",
             color: "#252525",
@@ -56,7 +56,7 @@ const LogIn = () => {
       } catch (error) {
         toast.error(error.message, {
           duration: 4000,
-          position: "top-center",
+          position: "top-right",
           style: {
             background: "#fff",
             color: "#252525",
