@@ -2,9 +2,22 @@ import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { RiLinksFill, RiAccountPinCircleLine } from "react-icons/ri";
 import { RiAlignLeft, RiCloseLine } from "react-icons/ri";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../features/AuthenticationSlice";
+import { account } from "../config";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const userDetails = useSelector(
+    (state) => state.AuthenticationReducer.userData
+  );
+  const dispatch = useDispatch();
+  const LogOut = async () => {
+    debugger;
+    await account.deleteSession("current");
+    dispatch(logOut(null));
+    setOpen(!open);
+  };
   const toggleNavigation = () => {
     setOpen(!open);
   };
@@ -51,21 +64,33 @@ const Header = () => {
 
             <div className="flex items-center gap-4">
               <div className="sm:flex sm:gap-4">
-                <NavLink
-                  className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
-                  to="/login"
-                >
-                  Login
-                </NavLink>
-
-                <div className="hidden sm:flex">
+                {userDetails ? (
                   <NavLink
-                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
-                    to="/signup"
+                    className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
+                    to="/login"
+                    onClick={LogOut}
                   >
-                    Sign Up
+                    LogOut
                   </NavLink>
-                </div>
+                ) : (
+                  <>
+                    <NavLink
+                      className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
+                      to="/login"
+                    >
+                      Login
+                    </NavLink>
+
+                    <div className="hidden sm:flex">
+                      <NavLink
+                        className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
+                        to="/signup"
+                      >
+                        Sign Up
+                      </NavLink>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -121,25 +146,41 @@ const Header = () => {
                   <RiAccountPinCircleLine size={20} />
                   Profile Details
                 </NavLink>
-
-                <div className="p-2">
-                  <NavLink
-                    className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
-                    to="/login"
-                    onClick={() => toggleNavigation()}
-                  >
-                    Login
-                  </NavLink>
-                </div>
-                <div className="p-2">
-                  <NavLink
-                    className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
-                    to="/signup"
-                    onClick={() => toggleNavigation()}
-                  >
-                    Sign Up
-                  </NavLink>
-                </div>
+                {userDetails ? (
+                  <div className="p-2">
+                    <NavLink
+                      className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
+                      to="/login"
+                      onClick={() => {
+                        LogOut();
+                        toggleNavigation();
+                      }}
+                    >
+                      LogOut
+                    </NavLink>
+                  </div>
+                ) : (
+                  <>
+                    <div className="p-2">
+                      <NavLink
+                        className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
+                        to="/login"
+                        onClick={() => toggleNavigation()}
+                      >
+                        Login
+                      </NavLink>
+                    </div>
+                    <div className="p-2">
+                      <NavLink
+                        className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
+                        to="/signup"
+                        onClick={() => toggleNavigation()}
+                      >
+                        Sign Up
+                      </NavLink>
+                    </div>
+                  </>
+                )}
               </div>
             </nav>
           </div>
