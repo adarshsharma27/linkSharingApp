@@ -28,7 +28,6 @@ const SignUp = () => {
     let emailRegex = /^\S+@\S+\.\S+$/;
     let nameReg = /^[A-Za-z]*$/;
     if (!name || !nameReg.test(name) || name.trim().length > 50) {
-      debugger;
       setNameErr(true);
       setEmailErr(false);
       setPasswordErr(false);

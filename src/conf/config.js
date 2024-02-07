@@ -8,7 +8,6 @@ const conf = {
 };
 
 export const client = new Client();
-debugger;
 client.setEndpoint(conf.appwriteUrl).setProject(conf.projectId); // Replace with your project ID
 
 export default conf;
