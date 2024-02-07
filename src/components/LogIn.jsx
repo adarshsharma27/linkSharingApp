@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { logIn } from "../features/AuthenticationSlice";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { account } from "../config";
+import { account } from "../conf/config";
 
 const LogIn = () => {
   const [email, setEmail] = useState();

@@ -10,8 +10,8 @@ import {
   RiUploadCloud2Fill,
 } from "react-icons/ri";
 import toast from "react-hot-toast";
-import conf from "../conf/conf";
-import { ID, databases } from "../config";
+import conf from "../conf/config";
+import { ID, databases } from "../conf/config";
 
 const ProfileDetails = () => {
   const dispatch = useDispatch();

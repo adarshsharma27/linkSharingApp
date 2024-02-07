@@ -4,7 +4,7 @@ import { RiLinksFill, RiAccountPinCircleLine } from "react-icons/ri";
 import { RiAlignLeft, RiCloseLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/AuthenticationSlice";
-import { account } from "../config";
+import { account } from "../conf/config";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +13,6 @@ const Header = () => {
   );
   const dispatch = useDispatch();
   const LogOut = async () => {
-    debugger;
     await account.deleteSession("current");
     dispatch(logOut(null));
     setOpen(!open);

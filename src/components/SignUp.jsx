@@ -6,7 +6,7 @@ import {
   RiRecordMailFill,
   RiLockPasswordFill,
 } from "react-icons/ri";
-import { ID, account } from "../config";
+import { ID, account } from "../conf/config";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
