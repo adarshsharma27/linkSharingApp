@@ -11,11 +11,11 @@ import {
 } from "react-icons/fa6";
 import conf, { databases } from "../conf/config";
 import { useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Preview = () => {
   // const userProfileLinksDetails = useSelector((state) => state.profileReducer); fetching from redux
   const [userProfileLinksDetails, setUserProfileLinksDetails] = useState();
-  console.log(userProfileLinksDetails);
   const { id } = useParams();
   useEffect(() => {
     const getProfile = async () => {
@@ -32,6 +32,20 @@ const Preview = () => {
   }, []);
   const shareProfileUrl = () => {
     window.navigator.clipboard.writeText(window.location.href);
+    toast.success("Profile Link Copied Successfully", {
+      duration: 4000,
+      position: "top-right",
+      style: {
+        background: "#fff",
+        color: "#252525",
+        padding: "20px",
+        fontWeight: "700",
+        boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+        borderBottom: "3px solid #4F46E5",
+        borderRadius: "3px",
+        fontFamily: "Poppins, sans-serif",
+      },
+    });
   };
   return (
     <>
