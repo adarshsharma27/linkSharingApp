@@ -149,7 +149,7 @@ const ProfileDetails = () => {
     );
   };
   const userLinksProfileDetails = async (e) => {
-    dispatch(addUserDetails({ firstName, lastName, email }));
+    dispatch(addUserDetails({ firstName, lastName, email ,imageUrl}));
 
     try {
       await databases.createDocument(
@@ -166,6 +166,7 @@ const ProfileDetails = () => {
           firstName,
           lastName,
           email,
+          imageUrl
         }
       );
       toast.success("Profile Created Successfully", {

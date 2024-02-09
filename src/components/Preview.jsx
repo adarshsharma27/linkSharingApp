@@ -24,7 +24,7 @@ const Preview = () => {
           <div className="flex flex-col items-center py-8 relative">
             <img
               className="w-24 h-24 mb-3 rounded-full shadow-lg border-4 border-indigo-600"
-              src="https://avatars1.githubusercontent.com/u/37371998?v=4"
+              src={userProfileLinksDetails?.profileDetails?.imageUrl}
               alt="Bonnie image"
             />
             <div className="bg-indigo-600 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
