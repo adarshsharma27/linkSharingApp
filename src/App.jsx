@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
