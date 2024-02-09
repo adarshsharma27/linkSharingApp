@@ -10,10 +10,12 @@ import {
 import conf, { databases } from "../conf/config";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
+import Loader from "./Loader";
 
 const Preview = () => {
   // const userProfileLinksDetails = useSelector((state) => state.profileReducer); fetching from redux
   const [userProfileLinksDetails, setUserProfileLinksDetails] = useState();
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
   useEffect(() => {
     const getProfile = async () => {
@@ -24,6 +26,7 @@ const Preview = () => {
           id
         );
         setUserProfileLinksDetails(resp);
+        setLoading(false);
       } catch (error) {}
     };
     getProfile();
@@ -48,150 +51,154 @@ const Preview = () => {
   return (
     <>
       <div className="lg:px-16 lg:py-6 p-4 font-poppins">
-        <div className="w-full max-w-sm bg-white border mx-auto border-gray-100 rounded-lg card-shadow-custom">
-          <div className="flex flex-col items-center py-8 relative">
-            <img
-              className="w-24 h-24 mb-3 rounded-full shadow-lg border-4 border-indigo-600"
-              src={userProfileLinksDetails?.imageUrl}
-              alt="Bonnie image"
-            />
-            <div className="bg-indigo-600 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
-              <FaShare size={22} onClick={() => shareProfileUrl()} />
-            </div>
-            <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white">
-              {userProfileLinksDetails?.firstName}{" "}
-              {userProfileLinksDetails?.lastName}
-            </h5>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              {userProfileLinksDetails?.email}
-            </span>
-            <div className="flex mt-4 md:mt-4">
-              <a
-                href={userProfileLinksDetails?.gitHubUrl}
-                className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-black-600 bg-black  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                target="_blank"
-              >
-                <FaGithub size={20} />
-                <span className="text-sm font-medium"> Github </span>
-
-                <svg
-                  className="h-5 w-5 rtl:rotate-180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+        {loading === true ? (
+          <Loader />
+        ) : (
+          <div className="w-full max-w-sm bg-white border mx-auto border-gray-100 rounded-lg card-shadow-custom">
+            <div className="flex flex-col items-center py-8 relative">
+              <img
+                className="w-24 h-24 mb-3 rounded-full shadow-lg border-4 border-indigo-600"
+                src={userProfileLinksDetails?.imageUrl}
+                alt="Bonnie image"
+              />
+              <div className="bg-indigo-600 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
+                <FaShare size={22} onClick={() => shareProfileUrl()} />
+              </div>
+              <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white">
+                {userProfileLinksDetails?.firstName}{" "}
+                {userProfileLinksDetails?.lastName}
+              </h5>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                {userProfileLinksDetails?.email}
+              </span>
+              <div className="flex mt-4 md:mt-4">
+                <a
+                  href={userProfileLinksDetails?.gitHubUrl}
+                  className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-black-600 bg-black  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  target="_blank"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div className="flex mt-4 md:mt-4">
-              <a
-                href={userProfileLinksDetails?.linkedInUrl}
-                className="inline-flex items-center  justify-center md:w-72 w-60 gap-2 rounded border border-[#0A66C2] bg-[#0A66C2]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                target="_blank"
-              >
-                <FaLinkedin size={20} />
-                <span className="text-sm font-medium"> LinkedIn </span>
+                  <FaGithub size={20} />
+                  <span className="text-sm font-medium"> Github </span>
 
-                <svg
-                  className="h-5 w-5 rtl:rotate-180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  <svg
+                    className="h-5 w-5 rtl:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div className="flex mt-4 md:mt-4">
+                <a
+                  href={userProfileLinksDetails?.linkedInUrl}
+                  className="inline-flex items-center  justify-center md:w-72 w-60 gap-2 rounded border border-[#0A66C2] bg-[#0A66C2]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  target="_blank"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div className="flex mt-4 md:mt-4">
-              <a
-                href={userProfileLinksDetails?.instaGramUrl}
-                className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#e4405f] bg-[#e4405f]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                target="_blank"
-              >
-                <FaInstagram size={20} />
-                <span className="text-sm font-medium">Instagram</span>
+                  <FaLinkedin size={20} />
+                  <span className="text-sm font-medium"> LinkedIn </span>
 
-                <svg
-                  className="h-5 w-5 rtl:rotate-180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  <svg
+                    className="h-5 w-5 rtl:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div className="flex mt-4 md:mt-4">
+                <a
+                  href={userProfileLinksDetails?.instaGramUrl}
+                  className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#e4405f] bg-[#e4405f]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  target="_blank"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div className="flex mt-4 md:mt-4">
-              <a
-                href={userProfileLinksDetails?.faceBookUrl}
-                className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1977F3] bg-[#1977F3]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                target="_blank"
-              >
-                <FaSquareFacebook size={20} />
-                <span className="text-sm font-medium"> Facebook </span>
+                  <FaInstagram size={20} />
+                  <span className="text-sm font-medium">Instagram</span>
 
-                <svg
-                  className="h-5 w-5 rtl:rotate-180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  <svg
+                    className="h-5 w-5 rtl:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div className="flex mt-4 md:mt-4">
+                <a
+                  href={userProfileLinksDetails?.faceBookUrl}
+                  className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1977F3] bg-[#1977F3]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  target="_blank"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div className="flex mt-4 md:mt-4">
-              <a
-                href={userProfileLinksDetails?.twitterUrl}
-                className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1d9bf0] bg-[#1d9bf0]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
-                target="_blank"
-              >
-                <FaSquareTwitter size={20} />
-                <span className="text-sm font-medium"> Twitter </span>
+                  <FaSquareFacebook size={20} />
+                  <span className="text-sm font-medium"> Facebook </span>
 
-                <svg
-                  className="h-5 w-5 rtl:rotate-180"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  <svg
+                    className="h-5 w-5 rtl:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div className="flex mt-4 md:mt-4">
+                <a
+                  href={userProfileLinksDetails?.twitterUrl}
+                  className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1d9bf0] bg-[#1d9bf0]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  target="_blank"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
+                  <FaSquareTwitter size={20} />
+                  <span className="text-sm font-medium"> Twitter </span>
+
+                  <svg
+                    className="h-5 w-5 rtl:rotate-180"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );
