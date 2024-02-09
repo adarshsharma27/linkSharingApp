@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import {
@@ -9,14 +9,30 @@ import {
   FaSquareTwitter,
   FaShare,
 } from "react-icons/fa6";
+import conf, { databases } from "../conf/config";
+import { useParams } from "react-router-dom";
 
 const Preview = () => {
-  const userProfileLinksDetails = useSelector((state) => state.profileReducer);
+  // const userProfileLinksDetails = useSelector((state) => state.profileReducer); fetching from redux
+  const [userProfileLinksDetails, setUserProfileLinksDetails] = useState();
   console.log(userProfileLinksDetails);
-
-  const shareProfileUrl=()=>{
-    window.navigator.clipboard.writeText(window.location.href)
-  }
+  const { id } = useParams();
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const resp = await databases.getDocument(
+          conf.databaseId,
+          conf.collectionId,
+          id
+        );
+        setUserProfileLinksDetails(resp);
+      } catch (error) {}
+    };
+    getProfile();
+  }, []);
+  const shareProfileUrl = () => {
+    window.navigator.clipboard.writeText(window.location.href);
+  };
   return (
     <>
       <div className="lg:px-16 lg:py-6 p-4 font-poppins">
@@ -24,22 +40,22 @@ const Preview = () => {
           <div className="flex flex-col items-center py-8 relative">
             <img
               className="w-24 h-24 mb-3 rounded-full shadow-lg border-4 border-indigo-600"
-              src={userProfileLinksDetails?.profileDetails?.imageUrl}
+              src={userProfileLinksDetails?.imageUrl}
               alt="Bonnie image"
             />
             <div className="bg-indigo-600 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
-              <FaShare size={22}  onClick={()=>shareProfileUrl()}/>
+              <FaShare size={22} onClick={() => shareProfileUrl()} />
             </div>
             <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white">
-              {userProfileLinksDetails?.profileDetails?.firstName}{" "}
-              {userProfileLinksDetails?.profileDetails?.lastName}
+              {userProfileLinksDetails?.firstName}{" "}
+              {userProfileLinksDetails?.lastName}
             </h5>
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {userProfileLinksDetails?.profileDetails?.email}
+              {userProfileLinksDetails?.email}
             </span>
             <div className="flex mt-4 md:mt-4">
               <a
-                href={userProfileLinksDetails.profileLinks.gitHubUrl}
+                href={userProfileLinksDetails?.gitHubUrl}
                 className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-black-600 bg-black  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                 target="_blank"
               >
@@ -64,7 +80,7 @@ const Preview = () => {
             </div>
             <div className="flex mt-4 md:mt-4">
               <a
-                href={userProfileLinksDetails.profileLinks.linkedInUrl}
+                href={userProfileLinksDetails?.linkedInUrl}
                 className="inline-flex items-center  justify-center md:w-72 w-60 gap-2 rounded border border-[#0A66C2] bg-[#0A66C2]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                 target="_blank"
               >
@@ -89,7 +105,7 @@ const Preview = () => {
             </div>
             <div className="flex mt-4 md:mt-4">
               <a
-                href={userProfileLinksDetails.profileLinks.instaGramUrl}
+                href={userProfileLinksDetails?.instaGramUrl}
                 className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#e4405f] bg-[#e4405f]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                 target="_blank"
               >
@@ -114,7 +130,7 @@ const Preview = () => {
             </div>
             <div className="flex mt-4 md:mt-4">
               <a
-                href={userProfileLinksDetails.profileLinks.faceBookUrl}
+                href={userProfileLinksDetails?.faceBookUrl}
                 className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1977F3] bg-[#1977F3]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                 target="_blank"
               >
@@ -139,7 +155,7 @@ const Preview = () => {
             </div>
             <div className="flex mt-4 md:mt-4">
               <a
-                href={userProfileLinksDetails.profileLinks.twitterUrl}
+                href={userProfileLinksDetails?.twitterUrl}
                 className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1d9bf0] bg-[#1d9bf0]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                 target="_blank"
               >

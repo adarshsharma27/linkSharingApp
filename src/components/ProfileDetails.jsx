@@ -149,10 +149,10 @@ const ProfileDetails = () => {
     );
   };
   const userLinksProfileDetails = async (e) => {
-    dispatch(addUserDetails({ firstName, lastName, email ,imageUrl}));
+    dispatch(addUserDetails({ firstName, lastName, email, imageUrl }));
 
     try {
-      await databases.createDocument(
+      const profileResponse = await databases.createDocument(
         conf.databaseId,
         conf.collectionId,
         ID.unique(),
@@ -166,7 +166,7 @@ const ProfileDetails = () => {
           firstName,
           lastName,
           email,
-          imageUrl
+          imageUrl,
         }
       );
       toast.success("Profile Created Successfully", {
@@ -184,7 +184,7 @@ const ProfileDetails = () => {
         },
       });
       NotificationAudio();
-      navigate("/preview");
+      navigate(`/preview/${profileResponse?.$id}`);
     } catch (error) {
       toast.error(error.message, {
         duration: 4000,
