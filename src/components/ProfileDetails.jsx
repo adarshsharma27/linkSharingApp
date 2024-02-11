@@ -13,6 +13,7 @@ import {
 import toast from "react-hot-toast";
 import conf from "../conf/config";
 import { ID, databases, storage } from "../conf/config";
+import { getFileId } from "../features/UploadFileIdSlice";
 
 const ProfileDetails = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,15 @@ const ProfileDetails = () => {
   const [hideFileUpload, setHideFileUpload] = useState(true);
   const userProfileDetails = useSelector((state) => state?.profileReducer);
   const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
+  const UploadImageId = useSelector(
+    (state) => state?.UploadFileIdReducer.fileId
+  );
+
   useEffect(() => {
     setFirstName(userProfileDetails?.profileDetails?.firstName);
     setLastName(userProfileDetails?.profileDetails?.lastName);
     setEmail(userProfileDetails?.profileDetails?.email);
+    setImageUrl(userProfileDetails?.profileDetails?.imageUrl);
   }, [userProfileDetails]);
   const gitHubUrl = userProfileLinksDetails?.profileLinks?.gitHubUrl;
   const linkedInUrl = userProfileLinksDetails?.profileLinks?.linkedInUrl;
@@ -86,6 +92,7 @@ const ProfileDetails = () => {
               setImageUrl(imgUrl?.href);
               // setCreateDisable(false);
               setUploadFileId(fileId);
+              dispatch(getFileId(fileId));
               setHideFileUpload(false);
             }
           }
@@ -111,7 +118,7 @@ const ProfileDetails = () => {
   };
   const deleteImage = () => {
     setImageUrl("");
-    const promise = storage.deleteFile(conf.bucketId, uploadFileId);
+    const promise = storage.deleteFile(conf.bucketId, UploadImageId);
     promise.then(
       function () {
         toast.success("Image Removed Successfully", {
@@ -129,6 +136,7 @@ const ProfileDetails = () => {
           },
         });
         setHideFileUpload(true);
+        dispatch(getFileId(""));
       },
       function (error) {
         toast.error(error.message, {
