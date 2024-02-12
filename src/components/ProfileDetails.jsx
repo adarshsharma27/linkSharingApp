@@ -45,7 +45,6 @@ const ProfileDetails = () => {
     const image = e.target.files[0];
     const imageType = image?.type.split("/")[1];
     const imageSize = image?.size;
-    debugger;
     if (
       imageType != "jpeg" &&
       imageType != "jpg" &&

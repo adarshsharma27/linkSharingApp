@@ -27,7 +27,7 @@ const SignUp = () => {
   const SignUp = async () => {
     let emailRegex = /^\S+@\S+\.\S+$/;
     let nameReg = /^[A-Za-z]*$/;
-    if (!name || !nameReg.test(name) || name.trim().length > 50) {
+    if (!name || !nameReg.test(name) || name.trim().length <2 || name.trim().length > 50) {
       setNameErr(true);
       setEmailErr(false);
       setPasswordErr(false);
@@ -207,7 +207,6 @@ const SignUp = () => {
                 <button
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   onClick={SignUp}
-                  disabled={nameErr || emailErr || passwordErr}
                 >
                   <span className="text-sm font-medium"> SignUp </span>
 
