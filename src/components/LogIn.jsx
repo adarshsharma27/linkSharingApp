@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 import { logIn } from "../features/AuthenticationSlice";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { account } from "../conf/config";
+import conf, { account } from "../conf/config";
 
 const LogIn = () => {
   const [email, setEmail] = useState();
@@ -52,7 +52,14 @@ const LogIn = () => {
         });
         setEmail("");
         setPassword("");
-        navigate("/");
+        if (
+          userData.userId === conf.adminUserId &&
+          userData.providerUid === conf.adminUserEmail
+        ) {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
       } catch (error) {
         toast.error(error.message, {
           duration: 4000,

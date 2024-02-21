@@ -9,6 +9,7 @@ import {
 import { ID, account } from "../conf/config";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import conf, { databases } from "../conf/config";
 
 const SignUp = () => {
   const [name, setName] = useState();
@@ -27,7 +28,12 @@ const SignUp = () => {
   const SignUp = async () => {
     let emailRegex = /^\S+@\S+\.\S+$/;
     let nameReg = /^[A-Za-z]*$/;
-    if (!name || !nameReg.test(name) || name.trim().length <2 || name.trim().length > 50) {
+    if (
+      !name ||
+      !nameReg.test(name) ||
+      name.trim().length < 2 ||
+      name.trim().length > 50
+    ) {
       setNameErr(true);
       setEmailErr(false);
       setPasswordErr(false);
@@ -41,7 +47,12 @@ const SignUp = () => {
       setEmailErr(false);
     } else {
       try {
-        await account.create(ID.unique(), email, password, name);
+        const response = await account.create(
+          ID.unique(),
+          email,
+          password,
+          name
+        );
         setName("");
         setEmail("");
         setPassword("");
@@ -59,6 +70,17 @@ const SignUp = () => {
             fontFamily: "Poppins, sans-serif",
           },
         });
+        if (response) {
+          await databases.createDocument(
+            conf.databaseId,
+            conf.usersCollectionId,
+            response?.$id,
+            {
+              name,
+              email,
+            }
+          );
+        }
 
         navigate("/login");
       } catch (error) {

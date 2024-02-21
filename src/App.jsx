@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -7,6 +7,7 @@ import Preview from "./components/Preview";
 import ProfileDetails from "./components/ProfileDetails";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
+import DashBoard from "./components/DashBoard";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
         <Route path="/preview/:id" element={<Preview />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/dashboard" element={<DashBoard />} />
       </Routes>
-      <Toaster/>
+      <Toaster />
       <Footer />
     </>
   );
