@@ -4,7 +4,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaInstagram,
-  FaSquareTwitter,
+  FaSquareXTwitter ,
   FaShare,
 } from "react-icons/fa6";
 import conf, { databases } from "../conf/config";
@@ -177,7 +177,7 @@ const Preview = () => {
                   className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1d9bf0] bg-[#1d9bf0]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   target="_blank"
                 >
-                  <FaSquareTwitter size={20} />
+                  <FaSquareXTwitter  size={20} />
                   <span className="text-sm font-medium"> Twitter </span>
 
                   <svg

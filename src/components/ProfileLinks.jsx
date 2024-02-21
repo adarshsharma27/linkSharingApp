@@ -7,7 +7,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaInstagram,
-  FaSquareTwitter,
+  FaSquareXTwitter ,
 } from "react-icons/fa6";
 const ProfileLinks = () => {
   const dispatch = useDispatch();
@@ -155,7 +155,7 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <FaSquareTwitter size={20} className="text-[#1d9bf0] " />
+                    <FaSquareXTwitter size={20} className="text-[#0F1419] " />
                   </span>
                 </div>
               </div>
