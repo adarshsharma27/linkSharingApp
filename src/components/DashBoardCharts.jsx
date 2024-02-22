@@ -15,6 +15,14 @@ const DashBoardCharts = ({ users, profiles }) => {
           },
         },
       },
+      tooltip: {
+        titleFont: {
+          family: "'Poppins', 'sans-serif'",
+        },
+        bodyFont: {
+          family: "'Poppins', 'sans-serif'",
+        },
+      },
     },
   };
 
