@@ -8,18 +8,23 @@ import ProfileDetails from "./components/ProfileDetails";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import DashBoard from "./components/DashBoard";
+import ProtectedRoutes from "./ProtectedRoutes";
+import { useSelector } from "react-redux";
 
 function App() {
+  const user = useSelector((state) => state.AuthenticationReducer.userData);
   return (
     <>
       <Header />
       <Routes>
+        <Route element={<ProtectedRoutes isAuthenticated={user} />}>
+          <Route path="/profileDetails" element={<ProfileDetails />} />
+          <Route path="/preview/:id" element={<Preview />} />
+          <Route path="/dashboard" element={<DashBoard />} />
+        </Route>
         <Route path="/" element={<Home />} />
-        <Route path="/profileDetails" element={<ProfileDetails />} />
-        <Route path="/preview/:id" element={<Preview />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
-        <Route path="/dashboard" element={<DashBoard />} />
       </Routes>
       <Toaster />
       <Footer />

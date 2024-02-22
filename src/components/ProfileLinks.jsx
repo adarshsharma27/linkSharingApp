@@ -7,8 +7,9 @@ import {
   FaLinkedin,
   FaGithub,
   FaInstagram,
-  FaSquareXTwitter ,
+  FaSquareXTwitter,
 } from "react-icons/fa6";
+import toast from "react-hot-toast";
 const ProfileLinks = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,8 +18,11 @@ const ProfileLinks = () => {
   const [instaGramUrl, setInstaGramUrl] = useState();
   const [faceBookUrl, setFaceBookUrl] = useState();
   const [twitterUrl, setTwitterUrl] = useState();
-  
+
   const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
+  const userDetails = useSelector(
+    (state) => state.AuthenticationReducer.userData
+  );
   useEffect(() => {
     setGitHubUrl(userProfileLinksDetails?.profileLinks?.gitHubUrl);
     setLinkedInUrl(userProfileLinksDetails?.profileLinks?.linkedInUrl);
@@ -27,8 +31,34 @@ const ProfileLinks = () => {
     setTwitterUrl(userProfileLinksDetails?.profileLinks?.twitterUrl);
   }, [userProfileLinksDetails]);
   const addProfileLinks = () => {
-    dispatch(addUserLinks({ gitHubUrl, linkedInUrl, instaGramUrl, faceBookUrl,twitterUrl}));
-    navigate("/profileDetails");
+    if (userDetails) {
+      dispatch(
+        addUserLinks({
+          gitHubUrl,
+          linkedInUrl,
+          instaGramUrl,
+          faceBookUrl,
+          twitterUrl,
+        })
+      );
+      navigate("/profileDetails");
+    } else {
+      toast.success("Please SignUp ", {
+        duration: 4000,
+        position: "top-right",
+        style: {
+          background: "#fff",
+          color: "#252525",
+          padding: "20px",
+          fontWeight: "700",
+          boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+          borderBottom: "3px solid #4F46E5",
+          borderRadius: "3px",
+          fontFamily: "Poppins, sans-serif",
+        },
+      });
+      navigate("/signup");
+    }
   };
   return (
     <>
