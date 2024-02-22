@@ -2,7 +2,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DashBoardCharts = ({ users, blogs }) => {
+const DashBoardCharts = ({ users, profiles }) => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -23,7 +23,7 @@ const DashBoardCharts = ({ users, blogs }) => {
     datasets: [
       {
         label: "Application Record",
-        data: [users, blogs],
+        data: [users, profiles],
         backgroundColor: ["#E2E8F0", "#4F46E5"],
         borderColor: ["#E2E8F0", "#4F46E5"],
         borderWidth: 2,

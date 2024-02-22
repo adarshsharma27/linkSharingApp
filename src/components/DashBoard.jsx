@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DashBoardCharts from "./DashBoardCharts";
 import DashBoardTable from "./DashBoardTable";
-import { LuUsers, LuScrollText, LuTrendingUp } from "react-icons/lu";
+import { FaUsers, FaIdCardClip } from "react-icons/fa6";
 import conf, { databases } from "../conf/config";
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
-  const [blogs, setBlogs] = useState([]);
+  const [profiles, setProfiles] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
   useEffect(() => {
     const getUsers = async () => {
@@ -28,7 +28,7 @@ const DashBoard = () => {
           conf.collectionId
         );
 
-        setBlogs(resp?.total);
+        setProfiles(resp?.total);
       } catch (error) {}
     };
     getBlogs();
@@ -47,7 +47,7 @@ const DashBoard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
             <div className="py-6 sm:mb-0 mb-6 card-shadow-custom rounded-lg flex flex-wrap gap-2  items-center flex-col">
               <div className="">
-                <LuUsers
+                <FaUsers
                   size={50}
                   className="text-indigo-600 hover:text-green-400 hover:cursor-pointer"
                 />
@@ -62,13 +62,13 @@ const DashBoard = () => {
             </div>
             <div className="py-6 sm:mb-0 mb-6 card-shadow-custom rounded-lg flex flex-wrap gap-2  items-center flex-col">
               <div className="">
-                <LuScrollText
+                <FaIdCardClip
                   size={50}
                   className="text-slate-400  hover:text-green-400 hover:cursor-pointer"
                 />
               </div>
               <h2 className="text-6xl font-bold font-montserrat text-gray-900 dark:text-white capitalize">
-                {blogs}
+                {profiles}
               </h2>
 
               <p className="text-xl font-bold leading-relaxed text-gray-600 dark:text-gray-300 capitalize">
@@ -83,7 +83,7 @@ const DashBoard = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-            <DashBoardCharts users={users} blogs={blogs} />
+            <DashBoardCharts users={users} profiles={profiles} />
             <DashBoardTable users={allUsers} />
           </div>
         </div>
