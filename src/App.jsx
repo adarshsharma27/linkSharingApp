@@ -10,12 +10,19 @@ import LogIn from "./components/LogIn";
 import DashBoard from "./components/DashBoard";
 import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const addDarkMode = () => {
+    let darkmode = document.querySelector("html");
+    darkmode.classList.toggle("dark");
+    setDarkMode(!darkMode);
+  };
   const user = useSelector((state) => state.AuthenticationReducer.userData);
   return (
     <>
-      <Header />
+      <Header addDarkMode={addDarkMode} darkMode={darkMode} />
       <Routes>
         <Route element={<ProtectedRoutes isAuthenticated={user} />}>
           <Route path="/profileDetails" element={<ProfileDetails />} />

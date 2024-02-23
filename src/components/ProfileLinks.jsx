@@ -62,8 +62,8 @@ const ProfileLinks = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-6 p-4 font-poppins">
-        <div className="p-6 rounded-lg card-shadow-custom">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-6 p-4 font-poppins dark:bg-[#313E51]">
+        <div className="p-6 rounded-lg card-shadow-custom dark:shadow-2xl">
           <div className="p-16">
             <img
               alt="profileLinks"
@@ -73,26 +73,26 @@ const ProfileLinks = () => {
           </div>
         </div>
         <div>
-          <div className="p-6 rounded-lg card-shadow-custom">
+          <div className="p-6 rounded-lg card-shadow-custom dark:bg-[#313E51] dark:shadow-2xl">
             <div className="mx-auto max-w-lg text-left">
-              <h1 className="text-2xl font-bold sm:text-2xl">
+              <h1 className="text-2xl font-bold sm:text-2xl dark:text-white">
                 Customize Your Links!
               </h1>
 
-              <p className="mt-2 text-gray-500">text</p>
+              <p className="mt-2 text-gray-500 dark:text-gray-200">text</p>
             </div>
             <div className="mx-auto mb-0 mt-8 max-w-lg space-y-4">
               <div>
                 <label
                   htmlFor="github"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Link GitHub#
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg  text-gray-700 border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Github Url"
                     value={gitHubUrl}
                     onChange={(e) => {
@@ -101,19 +101,19 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <FaGithub size={20} />
+                    <FaGithub size={20} className="dark:text-sky-500" />
                   </span>
                 </div>
                 <label
                   htmlFor="linkedin"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Link LinkedIn#
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter LinkedIn Url"
                     value={linkedInUrl}
                     onChange={(e) => {
@@ -122,19 +122,22 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <FaLinkedin size={20} className="text-[#0A66C2]" />
+                    <FaLinkedin
+                      size={20}
+                      className="text-[#0A66C2] dark:text-sky-500"
+                    />
                   </span>
                 </div>
                 <label
                   htmlFor="youtube"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Link Instagram#
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Twitter Url"
                     value={instaGramUrl}
                     onChange={(e) => {
@@ -143,19 +146,22 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <FaInstagram size={20} className="text-[#e4405f]" />
+                    <FaInstagram
+                      size={20}
+                      className="text-[#e4405f] dark:text-sky-500"
+                    />
                   </span>
                 </div>
                 <label
                   htmlFor="facebook"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Link Facebook#
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Facebook Url"
                     value={faceBookUrl}
                     onChange={(e) => {
@@ -164,19 +170,22 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <FaSquareFacebook size={20} className="text-[#1977F3] " />
+                    <FaSquareFacebook
+                      size={20}
+                      className="text-[#1977F3] dark:text-sky-500 "
+                    />
                   </span>
                 </div>
                 <label
                   htmlFor="facebook"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Link Twitter#
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Twitter Url"
                     value={twitterUrl}
                     onChange={(e) => {
@@ -185,7 +194,10 @@ const ProfileLinks = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <FaSquareXTwitter size={20} className="text-[#0F1419] " />
+                    <FaSquareXTwitter
+                      size={20}
+                      className="text-[#0F1419] dark:text-sky-500"
+                    />
                   </span>
                 </div>
               </div>

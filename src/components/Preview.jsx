@@ -4,7 +4,7 @@ import {
   FaLinkedin,
   FaGithub,
   FaInstagram,
-  FaSquareXTwitter ,
+  FaSquareXTwitter,
   FaShare,
 } from "react-icons/fa6";
 import conf, { databases } from "../conf/config";
@@ -50,31 +50,31 @@ const Preview = () => {
   };
   return (
     <>
-      <div className="lg:px-16 lg:py-6 p-4 font-poppins">
+      <div className="lg:px-16 lg:py-6 p-4 font-poppins dark:bg-[#313E51]">
         {loading === true ? (
           <Loader />
         ) : (
-          <div className="w-full max-w-sm bg-white border mx-auto border-gray-100 rounded-lg card-shadow-custom">
+          <div className="w-full max-w-sm bg-white border mx-auto border-gray-100  rounded-lg card-shadow-custom dark:border-[#313E51] dark:bg-[#313E51]  dark:shadow-2xl">
             <div className="flex flex-col items-center py-8 relative">
               <img
-                className="w-24 h-24 mb-3 rounded-full shadow-lg border-4 border-indigo-600"
+                className="w-24 h-24 mb-3 rounded-full shadow-lg border-4 border-indigo-600 dark:border-sky-500"
                 src={userProfileLinksDetails?.imageUrl}
                 alt="Bonnie image"
               />
-              <div className="bg-indigo-600 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
+              <div className="bg-indigo-600  dark:bg-sky-500 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
                 <FaShare size={22} onClick={() => shareProfileUrl()} />
               </div>
-              <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white">
+              <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white ">
                 {userProfileLinksDetails?.firstName}{" "}
                 {userProfileLinksDetails?.lastName}
               </h5>
-              <span className="text-sm text-gray-500 dark:text-gray-400">
+              <span className="text-sm text-gray-500 dark:text-gray-400 ">
                 {userProfileLinksDetails?.email}
               </span>
               <div className="flex mt-4 md:mt-4">
                 <a
                   href={userProfileLinksDetails?.gitHubUrl}
-                  className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-black-600 bg-black  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-black bg-black  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   target="_blank"
                 >
                   <FaGithub size={20} />
@@ -177,7 +177,7 @@ const Preview = () => {
                   className="inline-flex items-center justify-center md:w-72 w-60 gap-2 rounded border border-[#1d9bf0] bg-[#1d9bf0]  py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   target="_blank"
                 >
-                  <FaSquareXTwitter  size={20} />
+                  <FaSquareXTwitter size={20} />
                   <span className="text-sm font-medium"> Twitter </span>
 
                   <svg

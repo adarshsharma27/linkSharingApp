@@ -211,8 +211,8 @@ const ProfileDetails = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-6 p-4 font-poppins">
-        <div className="p-6 rounded-lg card-shadow-custom">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-6 p-4 font-poppins dark:bg-[#313E51]">
+        <div className="p-6 rounded-lg card-shadow-custom dark:shadow-2xl">
           <div className="p-16">
             <img
               alt="profileDetails"
@@ -222,13 +222,13 @@ const ProfileDetails = () => {
           </div>
         </div>
         <div>
-          <div className="p-6 rounded-lg card-shadow-custom">
+          <div className="p-6 rounded-lg card-shadow-custom dark:bg-[#313E51] dark:shadow-2xl">
             <div className="mx-auto max-w-lg text-left">
-              <h1 className="text-2xl font-bold sm:text-2xl">
+              <h1 className="text-2xl font-bold sm:text-2xl dark:text-white">
                 Customize Your Links!
               </h1>
 
-              <p className="mt-2 text-gray-500">
+              <p className="mt-2 text-gray-500 dark:text-gray-200">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
                 libero nulla eaque error neque ipsa culpa autem, at itaque
                 nostrum!
@@ -238,14 +238,14 @@ const ProfileDetails = () => {
               <div>
                 <label
                   for="firstName"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   First Name
                 </label>
                 <div className="relative my-2">
                   <input
                     type="text"
-                    className="w-full rounded-lg  text-gray-700 border-gray-200 p-4 pe-12 text-sm shadow-sm outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg  text-gray-700 border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-sm outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter First Name"
                     value={firstName}
                     onChange={(e) => {
@@ -256,20 +256,20 @@ const ProfileDetails = () => {
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                     <RiAccountPinCircleFill
                       size={20}
-                      className="text-indigo-600"
+                      className="text-indigo-600 dark:text-sky-500"
                     />
                   </span>
                 </div>
                 <label
                   for="lastName"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Last Name
                 </label>
                 <div className="relative my-2">
                   <input
                     type="text"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Enter Last Name"
                     value={lastName}
                     onChange={(e) => {
@@ -278,19 +278,22 @@ const ProfileDetails = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <RiAB size={20} className="text-indigo-600" />
+                    <RiAB
+                      size={20}
+                      className="text-indigo-600 dark:text-sky-500"
+                    />
                   </span>
                 </div>
                 <label
                   for="email"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Email
                 </label>
                 <div className="relative my-2">
                   <input
                     type="email"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Please Enter Email"
                     value={email}
                     onChange={(e) => {
@@ -299,12 +302,15 @@ const ProfileDetails = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <RiMailOpenFill size={20} className="text-indigo-600" />
+                    <RiMailOpenFill
+                      size={20}
+                      className="text-indigo-600 dark:text-sky-500"
+                    />
                   </span>
                 </div>
                 <label
                   for="email"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Profile Picture
                 </label>
@@ -313,16 +319,16 @@ const ProfileDetails = () => {
                   <div className="flex items-center justify-center w-full">
                     <label
                       for="dropzone-file"
-                      className="flex flex-col items-center justify-center w-full h-54 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 hover:border-indigo-600 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                      className="flex flex-col items-center justify-center w-full h-54 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:dark:bg-[#2c3b4f]  dark:bg-[#3C4D67]  hover:bg-gray-100 hover:border-indigo-600 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                     >
                       <div className="flex flex-col items-center justify-center pt-5 pb-6">
                         <RiUploadCloud2Fill
                           size={30}
-                          className="text-indigo-600"
+                          className="text-indigo-600 dark:text-sky-500"
                         />
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                           <span className="font-semibold">Click to upload</span>{" "}
-                          <span className="text-indigo-600 font-bold lg:text-xl text-base">
+                          <span className="text-indigo-600 font-bold lg:text-xl text-base dark:text-sky-500">
                             Profile Picture
                           </span>
                         </p>

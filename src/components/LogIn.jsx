@@ -80,7 +80,7 @@ const LogIn = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-16 p-4 font-poppins">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-2  lg:px-16 lg:py-16 p-4 font-poppins dark:bg-[#313E51]">
         <div className="">
           <img
             alt="profileLinks"
@@ -89,24 +89,28 @@ const LogIn = () => {
           />
         </div>
         <div>
-          <div className="p-6 rounded-lg card-shadow-custom">
+          <div className="p-6 rounded-lg card-shadow-custom dark:bg-[#313E51] dark:shadow-2xl">
             <div className="mx-auto max-w-lg text-left">
-              <h1 className="text-2xl font-bold sm:text-2xl">Login!</h1>
+              <h1 className="text-2xl font-bold sm:text-2xl dark:text-white">
+                Login!
+              </h1>
 
-              <p className="mt-2 text-gray-500">LogIn to SimpleShare!</p>
+              <p className="mt-2 text-gray-500 dark:text-gray-200">
+                LogIn to SimpleShare!
+              </p>
             </div>
             <div className="mx-auto mb-0 mt-4 max-w-lg space-y-4">
               <div>
                 <label
                   htmlFor="email"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Email
                 </label>
                 <div className="relative my-2">
                   <input
                     type="email"
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Please Enter Email"
                     value={email}
                     onChange={(e) => {
@@ -115,7 +119,10 @@ const LogIn = () => {
                   />
 
                   <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                    <RiRecordMailFill size={20} className="text-indigo-600" />
+                    <RiRecordMailFill
+                      size={20}
+                      className="text-indigo-600 dark:text-white"
+                    />
                   </span>
                 </div>
                 {emailErr && (
@@ -127,14 +134,14 @@ const LogIn = () => {
                 )}
                 <label
                   htmlFor="name"
-                  className="text-sm font-medium text-gray-600"
+                  className="text-sm font-medium text-gray-600 dark:text-white"
                 >
                   Password
                 </label>
                 <div className="relative my-2">
                   <input
                     type={showPassword ? "text" : "password"}
-                    className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
+                    className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
                     placeholder="Please Enter Password"
                     value={password}
                     onChange={(e) => {
@@ -145,7 +152,7 @@ const LogIn = () => {
                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                       <RiLockPasswordFill
                         size={20}
-                        className="text-indigo-600"
+                        className="text-indigo-600 dark:text-white"
                       />
                     </span>
                   )}
@@ -157,9 +164,15 @@ const LogIn = () => {
                       }}
                     >
                       {showPassword == true ? (
-                        <RiEyeOffFill size={20} className="text-indigo-600" />
+                        <RiEyeOffFill
+                          size={20}
+                          className="text-indigo-600 dark:text-white"
+                        />
                       ) : (
-                        <RiEyeFill size={20} className="text-indigo-600" />
+                        <RiEyeFill
+                          size={20}
+                          className="text-indigo-600 dark:text-white"
+                        />
                       )}
                     </span>
                   )}
