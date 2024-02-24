@@ -35,7 +35,7 @@ const DashBoard = () => {
   }, []);
   return (
     <>
-      <section className="text-gray-600 font-poppins dark:bg-slate-700">
+      <section className="text-gray-600 font-poppins  dark:bg-[#313E51]">
         <div className="container px-5  mx-auto">
           <div className="flex flex-col">
             <div className="flex flex-wrap sm:flex-row flex-col py-6">
@@ -45,11 +45,11 @@ const DashBoard = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-            <div className="py-6 sm:mb-0 mb-6 card-shadow-custom rounded-lg flex flex-wrap gap-2  items-center flex-col">
+            <div className="py-6 sm:mb-0 mb-6 card-shadow-custom rounded-lg flex flex-wrap gap-2  items-center flex-col dark:shadow-2xl">
               <div className="">
                 <FaUsers
                   size={50}
-                  className="text-indigo-600 hover:text-green-400 hover:cursor-pointer"
+                  className="text-indigo-600 hover:text-green-400 hover:cursor-pointer dark:text-sky-500"
                 />
               </div>
               <h2 className="text-6xl  font-bold font-montserrat text-gray-900 dark:text-white capitalize">
@@ -60,11 +60,11 @@ const DashBoard = () => {
                 Total Users
               </p>
             </div>
-            <div className="py-6 sm:mb-0 mb-6 card-shadow-custom rounded-lg flex flex-wrap gap-2  items-center flex-col">
+            <div className="py-6 sm:mb-0 mb-6 card-shadow-custom rounded-lg flex flex-wrap gap-2  items-center flex-col dark:shadow-2xl">
               <div className="">
                 <FaIdCardClip
                   size={50}
-                  className="text-slate-400  hover:text-green-400 hover:cursor-pointer"
+                  className="text-slate-400  hover:text-green-400 hover:cursor-pointer dark:text-sky-500"
                 />
               </div>
               <h2 className="text-6xl font-bold font-montserrat text-gray-900 dark:text-white capitalize">

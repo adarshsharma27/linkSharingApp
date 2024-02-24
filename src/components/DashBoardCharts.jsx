@@ -40,7 +40,7 @@ const DashBoardCharts = ({ users, profiles }) => {
   };
   return (
     <>
-      <div className="my-6 w-full p-4 container h-[50vh] md:h-[80vh] card-shadow-custom rounded-lg">
+      <div className="my-6 w-full p-4 container h-[50vh] md:h-[80vh] card-shadow-custom rounded-lg dark:shadow-2xl dark:text-white">
         <Doughnut options={options} data={data} />
       </div>
     </>
