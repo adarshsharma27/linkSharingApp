@@ -18,6 +18,11 @@ const ProfileLinks = () => {
   const [instaGramUrl, setInstaGramUrl] = useState();
   const [faceBookUrl, setFaceBookUrl] = useState();
   const [twitterUrl, setTwitterUrl] = useState();
+  const [gitHubUrlErr, setGitHubUrlErr] = useState(false);
+  const [linkedInUrlErr, setLinkedInUrlErr] = useState(false);
+  const [instaGramUrlErr, setInstaGramUrlErr] = useState(false);
+  const [faceBookUrlErr, setFaceBookUrlErr] = useState(false);
+  const [twitterUrlErr, setTwitterUrlErr] = useState(false);
 
   const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
   const userDetails = useSelector(
@@ -31,33 +36,76 @@ const ProfileLinks = () => {
     setTwitterUrl(userProfileLinksDetails?.profileLinks?.twitterUrl);
   }, [userProfileLinksDetails]);
   const addProfileLinks = () => {
-    if (userDetails) {
-      dispatch(
-        addUserLinks({
-          gitHubUrl,
-          linkedInUrl,
-          instaGramUrl,
-          faceBookUrl,
-          twitterUrl,
-        })
-      );
-      navigate("/profileDetails");
+    // Regular expressions for validating URLs
+    const githubRegex =
+      /^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9-]+(\/)?$/;
+    const linkedinRegex =
+      /^(https?:\/\/)?(www\.)?linkedin\.com\/[a-zA-Z0-9-]+(\/)?$/;
+    const instagramRegex =
+      /^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9_.]+(\/)?$/;
+    const facebookRegex =
+      /^(https?:\/\/)?(www\.)?facebook\.com\/[a-zA-Z0-9-.]+(\/)?$/;
+    const twitterRegex =
+      /^(https?:\/\/)?(www\.)?twitter\.com\/[a-zA-Z0-9_]+(\/)?$/;
+    if (!gitHubUrl || !githubRegex.test(gitHubUrl)) {
+      setGitHubUrlErr(true);
+      setLinkedInUrlErr(false);
+      setInstaGramUrlErr(false);
+      setFaceBookUrlErr(false);
+      setTwitterUrlErr(false);
+    } else if (!linkedInUrl || !linkedinRegex.test(linkedInUrl)) {
+      setLinkedInUrlErr(true);
+      setGitHubUrlErr(false);
+      setInstaGramUrlErr(false);
+      setFaceBookUrlErr(false);
+      setTwitterUrlErr(false);
+    } else if (!instaGramUrl || !instagramRegex.test(instaGramUrl)) {
+      setInstaGramUrlErr(true);
+      setGitHubUrlErr(false);
+      setLinkedInUrlErr(false);
+      setFaceBookUrlErr(false);
+      setTwitterUrlErr(false);
+    } else if (!faceBookUrl || !facebookRegex.test(faceBookUrl)) {
+      setFaceBookUrlErr(true);
+      setInstaGramUrlErr(false);
+      setGitHubUrlErr(false);
+      setLinkedInUrlErr(false);
+      setTwitterUrlErr(false);
+    } else if (!twitterUrl || !twitterRegex.test(twitterUrl)) {
+      setTwitterUrlErr(true);
+      setFaceBookUrlErr(false);
+      setInstaGramUrlErr(false);
+      setGitHubUrlErr(false);
+      setLinkedInUrlErr(false);
     } else {
-      toast.success("Please SignUp ", {
-        duration: 4000,
-        position: "top-right",
-        style: {
-          background: "#fff",
-          color: "#252525",
-          padding: "20px",
-          fontWeight: "700",
-          boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
-          borderBottom: "3px solid #4F46E5",
-          borderRadius: "3px",
-          fontFamily: "Poppins, sans-serif",
-        },
-      });
-      navigate("/signup");
+      if (userDetails) {
+        dispatch(
+          addUserLinks({
+            gitHubUrl,
+            linkedInUrl,
+            instaGramUrl,
+            faceBookUrl,
+            twitterUrl,
+          })
+        );
+        navigate("/profileDetails");
+      } else {
+        toast.success("Please SignUp ", {
+          duration: 4000,
+          position: "top-right",
+          style: {
+            background: "#fff",
+            color: "#252525",
+            padding: "20px",
+            fontWeight: "700",
+            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+            borderBottom: "3px solid #4F46E5",
+            borderRadius: "3px",
+            fontFamily: "Poppins, sans-serif",
+          },
+        });
+        navigate("/signup");
+      }
     }
   };
   return (
@@ -104,6 +152,13 @@ const ProfileLinks = () => {
                     <FaGithub size={20} className="dark:text-sky-500" />
                   </span>
                 </div>
+                {gitHubUrlErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter GitHub Url
+                    </span>
+                  </div>
+                )}
                 <label
                   htmlFor="linkedin"
                   className="text-sm font-medium text-gray-600 dark:text-white"
@@ -128,6 +183,13 @@ const ProfileLinks = () => {
                     />
                   </span>
                 </div>
+                {linkedInUrlErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter LinkedIn Url
+                    </span>
+                  </div>
+                )}
                 <label
                   htmlFor="youtube"
                   className="text-sm font-medium text-gray-600 dark:text-white"
@@ -152,6 +214,13 @@ const ProfileLinks = () => {
                     />
                   </span>
                 </div>
+                {instaGramUrlErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter Instagram Url
+                    </span>
+                  </div>
+                )}
                 <label
                   htmlFor="facebook"
                   className="text-sm font-medium text-gray-600 dark:text-white"
@@ -176,6 +245,13 @@ const ProfileLinks = () => {
                     />
                   </span>
                 </div>
+                {faceBookUrlErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter Facebook Url
+                    </span>
+                  </div>
+                )}
                 <label
                   htmlFor="facebook"
                   className="text-sm font-medium text-gray-600 dark:text-white"
@@ -200,6 +276,13 @@ const ProfileLinks = () => {
                     />
                   </span>
                 </div>
+                {twitterUrlErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter Twitter Url
+                    </span>
+                  </div>
+                )}
               </div>
 
               <div className="flex items-center justify-between">

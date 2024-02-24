@@ -24,6 +24,10 @@ const ProfileDetails = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [uploadFileId, setUploadFileId] = useState("");
   const [hideFileUpload, setHideFileUpload] = useState(true);
+  const [firstNameErr, setFirstNameErr] = useState(false);
+  const [lastNameErr, setLastNameErr] = useState(false);
+  const [emailErr, setEmailErr] = useState(false);
+  const [imageErr, setImageErr] = useState(false);
   const userProfileDetails = useSelector((state) => state?.profileReducer);
   const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
   const UploadImageId = useSelector(
@@ -156,57 +160,86 @@ const ProfileDetails = () => {
     );
   };
   const userLinksProfileDetails = async (e) => {
-    dispatch(addUserDetails({ firstName, lastName, email, imageUrl }));
+    let emailRegex = /^\S+@\S+\.\S+$/;
+    let nameReg = /^[A-Za-z]*$/;
+    if (
+      !firstName ||
+      !nameReg.test(firstName) ||
+      firstName.trim().length > 50
+    ) {
+      setFirstNameErr(true);
+      setLastNameErr(false);
+      setEmailErr(false);
+    } else if (
+      !lastName ||
+      !nameReg.test(lastName) ||
+      lastName.trim().length > 50
+    ) {
+      setLastNameErr(true);
+      setFirstNameErr(false);
+      setEmailErr(false);
+    } else if (!emailRegex.test(email)) {
+      setEmailErr(true);
+      setLastNameErr(false);
+      setFirstNameErr(false);
+    } else if (!imageUrl) {
+      setImageErr(true);
+      setEmailErr(false);
+      setLastNameErr(false);
+      setFirstNameErr(false);
+    } else {
+      dispatch(addUserDetails({ firstName, lastName, email, imageUrl }));
 
-    try {
-      const profileResponse = await databases.createDocument(
-        conf.databaseId,
-        conf.collectionId,
-        ID.unique(),
-        {
-          gitHubUrl,
-          linkedInUrl,
-          instaGramUrl,
-          faceBookUrl,
-          faceBookUrl,
-          twitterUrl,
-          firstName,
-          lastName,
-          email,
-          imageUrl,
-        }
-      );
-      toast.success("Profile Created Successfully", {
-        duration: 4000,
-        position: "top-right",
-        style: {
-          background: "#fff",
-          color: "#252525",
-          padding: "20px",
-          fontWeight: "700",
-          boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
-          borderBottom: "3px solid #4F46E5",
-          borderRadius: "3px",
-          fontFamily: "Poppins, sans-serif",
-        },
-      });
-      NotificationAudio();
-      navigate(`/preview/${profileResponse?.$id}`);
-    } catch (error) {
-      toast.error(error.message, {
-        duration: 4000,
-        position: "top-right",
-        style: {
-          background: "#fff",
-          color: "#252525",
-          padding: "20px",
-          fontWeight: "700",
-          boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
-          borderBottom: "3px solid #F17171",
-          borderRadius: "3px",
-          fontFamily: "Poppins, sans-serif",
-        },
-      });
+      try {
+        const profileResponse = await databases.createDocument(
+          conf.databaseId,
+          conf.collectionId,
+          ID.unique(),
+          {
+            gitHubUrl,
+            linkedInUrl,
+            instaGramUrl,
+            faceBookUrl,
+            faceBookUrl,
+            twitterUrl,
+            firstName,
+            lastName,
+            email,
+            imageUrl,
+          }
+        );
+        toast.success("Profile Created Successfully", {
+          duration: 4000,
+          position: "top-right",
+          style: {
+            background: "#fff",
+            color: "#252525",
+            padding: "20px",
+            fontWeight: "700",
+            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+            borderBottom: "3px solid #4F46E5",
+            borderRadius: "3px",
+            fontFamily: "Poppins, sans-serif",
+          },
+        });
+        NotificationAudio();
+        navigate(`/preview/${profileResponse?.$id}`);
+      } catch (error) {
+        toast.error(error.message, {
+          duration: 4000,
+          position: "top-right",
+          style: {
+            background: "#fff",
+            color: "#252525",
+            padding: "20px",
+            fontWeight: "700",
+            boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
+            borderBottom: "3px solid #F17171",
+            borderRadius: "3px",
+            fontFamily: "Poppins, sans-serif",
+          },
+        });
+      }
     }
   };
   return (
@@ -260,6 +293,13 @@ const ProfileDetails = () => {
                     />
                   </span>
                 </div>
+                {firstNameErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter First Name
+                    </span>
+                  </div>
+                )}
                 <label
                   for="lastName"
                   className="text-sm font-medium text-gray-600 dark:text-white"
@@ -284,6 +324,13 @@ const ProfileDetails = () => {
                     />
                   </span>
                 </div>
+                {lastNameErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter Last Name
+                    </span>
+                  </div>
+                )}
                 <label
                   for="email"
                   className="text-sm font-medium text-gray-600 dark:text-white"
@@ -308,6 +355,13 @@ const ProfileDetails = () => {
                     />
                   </span>
                 </div>
+                {emailErr && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Enter Email
+                    </span>
+                  </div>
+                )}
                 <label
                   for="email"
                   className="text-sm font-medium text-gray-600 dark:text-white"
@@ -358,6 +412,13 @@ const ProfileDetails = () => {
                       </div>
                     </div>
                   </>
+                )}
+                {imageErr && !imageUrl && (
+                  <div className="pt-2">
+                    <span className="text-red-400 text-sm font-semibold">
+                      Please Upload Profile Image
+                    </span>
+                  </div>
                 )}
               </div>
 
