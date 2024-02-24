@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { RiLinksFill, RiAccountPinCircleLine } from "react-icons/ri";
+import { RiLinksFill, RiAccountPinCircleLine ,RiHomeOfficeLine } from "react-icons/ri";
 import { RiAlignLeft, RiCloseLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/AuthenticationSlice";
-import { account } from "../conf/config";
+import conf, { account } from "../conf/config";
 
 const Header = ({ addDarkMode, darkMode }) => {
   const [open, setOpen] = useState(false);
@@ -60,6 +60,19 @@ const Header = ({ addDarkMode, darkMode }) => {
                       Profile Details
                     </NavLink>
                   </li>
+                  {
+                    userDetails?.userId === conf.adminUserId &&
+                    userDetails?.providerUid === conf.adminUserEmail &&   <li>
+                    <NavLink
+                      className="flex gap-2 dark:text-white hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
+                      to="/dashboard"
+                    >
+                      <RiHomeOfficeLine   size={20} />
+                      DashBoard
+                    </NavLink>
+                  </li>
+                  }
+                
                 </ul>
               </nav>
             </div>
@@ -196,6 +209,18 @@ const Header = ({ addDarkMode, darkMode }) => {
                   <RiAccountPinCircleLine size={20} />
                   Profile Details
                 </NavLink>
+                {
+                    userDetails?.userId === conf.adminUserId &&
+                    userDetails?.providerUid === conf.adminUserEmail &&   <li>
+                    <NavLink
+                      className="flex gap-2 dark:text-white hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
+                      to="/dashboard"
+                    >
+                      <RiHomeOfficeLine   size={20} />
+                      DashBoard
+                    </NavLink>
+                  </li>
+                  }
                 {userDetails ? (
                   <div className="p-2">
                     <NavLink
