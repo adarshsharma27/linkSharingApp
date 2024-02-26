@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { RiLinksFill, RiAccountPinCircleLine ,RiHomeOfficeLine } from "react-icons/ri";
+import {
+  RiLinksFill,
+  RiAccountPinCircleLine,
+  RiHomeOfficeLine,
+} from "react-icons/ri";
 import { RiAlignLeft, RiCloseLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../features/AuthenticationSlice";
 import conf, { account } from "../conf/config";
-
+import { useTranslation } from "react-i18next";
 const Header = ({ addDarkMode, darkMode }) => {
   const [open, setOpen] = useState(false);
+  const { i18n } = useTranslation();
   const userDetails = useSelector(
     (state) => state.AuthenticationReducer.userData
   );
@@ -60,19 +65,34 @@ const Header = ({ addDarkMode, darkMode }) => {
                       Profile Details
                     </NavLink>
                   </li>
-                  {
-                    userDetails?.userId === conf.adminUserId &&
-                    userDetails?.providerUid === conf.adminUserEmail &&   <li>
-                    <NavLink
-                      className="flex gap-2 dark:text-white hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
-                      to="/dashboard"
+                  {userDetails?.userId === conf.adminUserId &&
+                    userDetails?.providerUid === conf.adminUserEmail && (
+                      <li>
+                        <NavLink
+                          className="flex gap-2 dark:text-white hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
+                          to="/dashboard"
+                        >
+                          <RiHomeOfficeLine size={20} />
+                          DashBoard
+                        </NavLink>
+                      </li>
+                    )}
+                  <li>
+                    <select
+                      name="languageSelector"
+                      id="languageSelector"
+                      className="rounded-md bg-gray-100 dark:bg-[#3C4D67] dark:text-white px-2 py-2.5 text-sm "
+                      onChange={(e) => {
+                        i18n.changeLanguage(e.target.value);
+                      }}
+                      value={i18n.language}
                     >
-                      <RiHomeOfficeLine   size={20} />
-                      DashBoard
-                    </NavLink>
+                      <option value="en">English</option>
+                      <option value="hi">Hindi</option>
+                      <option value="fr">Spanish</option>
+                      <option value="de">German</option>
+                    </select>
                   </li>
-                  }
-                
                 </ul>
               </nav>
             </div>
@@ -209,18 +229,35 @@ const Header = ({ addDarkMode, darkMode }) => {
                   <RiAccountPinCircleLine size={20} />
                   Profile Details
                 </NavLink>
-                {
-                    userDetails?.userId === conf.adminUserId &&
-                    userDetails?.providerUid === conf.adminUserEmail &&   <li>
-                    <NavLink
-                      className="flex gap-2 dark:text-white hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
-                      to="/dashboard"
-                    >
-                      <RiHomeOfficeLine   size={20} />
-                      DashBoard
-                    </NavLink>
-                  </li>
-                  }
+                {userDetails?.userId === conf.adminUserId &&
+                  userDetails?.providerUid === conf.adminUserEmail && (
+                    <li>
+                      <NavLink
+                        className="flex gap-2 dark:text-white hover:bg-slate-200 hover:text-indigo-600 p-2 rounded"
+                        to="/dashboard"
+                      >
+                        <RiHomeOfficeLine size={20} />
+                        DashBoard
+                      </NavLink>
+                    </li>
+                  )}
+
+                <select
+                  name="languageSelector"
+                  id="languageSelector"
+                  className="rounded-md bg-gray-100 dark:bg-[#3C4D67] dark:text-white px-2 py-2.5 text-sm "
+                  onChange={(e) => {
+                    i18n.changeLanguage(e.target.value);
+                    toggleNavigation();
+                  }}
+                  value={i18n.language}
+                >
+                  <option value="en">English</option>
+                  <option value="hi">Hindi</option>
+                  <option value="fr">Spanish</option>
+                  <option value="de">German</option>
+                </select>
+
                 {userDetails ? (
                   <div className="p-2">
                     <NavLink

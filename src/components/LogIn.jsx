@@ -10,7 +10,7 @@ import { logIn } from "../features/AuthenticationSlice";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import conf, { account } from "../conf/config";
-
+import { useTranslation } from 'react-i18next';
 const LogIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -19,6 +19,7 @@ const LogIn = () => {
   const [passwordErr, setPasswordErr] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     if (password === "") {
       setShowPassword(false);
@@ -92,11 +93,11 @@ const LogIn = () => {
           <div className="p-6 rounded-lg card-shadow-custom dark:bg-[#313E51] dark:shadow-2xl">
             <div className="mx-auto max-w-lg text-left">
               <h1 className="text-2xl font-bold sm:text-2xl dark:text-white">
-                Login!
+              {t('commonTitle.logInTitle')}
               </h1>
 
               <p className="mt-2 text-gray-500 dark:text-gray-200">
-                LogIn to SimpleShare!
+               {t('commonTitle.logInHeader')}
               </p>
             </div>
             <div className="mx-auto mb-0 mt-4 max-w-lg space-y-4">
@@ -105,13 +106,13 @@ const LogIn = () => {
                   htmlFor="email"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Email
+                 {t('commonTitle.Email')}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="email"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Please Enter Email"
+                    placeholder={t('commonTitle.Please Enter Email')}
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -128,7 +129,7 @@ const LogIn = () => {
                 {emailErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-base font-semibold">
-                      Please Enter Email
+                    {t('commonTitle.Please Enter Email')}
                     </span>
                   </div>
                 )}
@@ -136,13 +137,13 @@ const LogIn = () => {
                   htmlFor="name"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Password
+                {t('commonTitle.Password')}
                 </label>
                 <div className="relative my-2">
                   <input
                     type={showPassword ? "text" : "password"}
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Please Enter Password"
+                    placeholder={t('commonTitle.Please Enter Password')}
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
@@ -180,7 +181,7 @@ const LogIn = () => {
                 {passwordErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-base font-semibold">
-                      Please Enter Password
+                    {t('commonTitle.Please Enter Password')}
                     </span>
                   </div>
                 )}
@@ -191,7 +192,7 @@ const LogIn = () => {
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   onClick={LogIn}
                 >
-                  <span className="text-sm font-medium"> LogIn </span>
+                  <span className="text-sm font-medium"> {t('commonTitle.logInButton')} </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"

@@ -1,0 +1,11 @@
+{
+  "commonTitle": {
+    "logInTitle": "लॉग इन",
+    "logInHeader": " सिम्पलशेयर में लॉग इन करें!",
+    "Email": "ईमेल",
+    "Password": "पासवर्ड",
+    "Please Enter Email": "कृपया ईमेल दर्ज करें",
+    "Please Enter Password": "कृपया पासवर्ड दर्ज करें",
+    "logInButton": "लॉग इन"
+  }
+}
