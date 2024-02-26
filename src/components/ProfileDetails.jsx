@@ -369,7 +369,7 @@ const ProfileDetails = () => {
                   Profile Picture
                 </label>
 
-                {hideFileUpload && (
+                {hideFileUpload && !imageUrl && (
                   <div className="flex items-center justify-center w-full">
                     <label
                       for="dropzone-file"
