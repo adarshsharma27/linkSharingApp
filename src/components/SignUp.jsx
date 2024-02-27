@@ -10,6 +10,7 @@ import { ID, account } from "../conf/config";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import conf, { databases } from "../conf/config";
+import emailjs from "@emailjs/browser";
 
 const SignUp = () => {
   const [name, setName] = useState();
@@ -19,6 +20,10 @@ const SignUp = () => {
   const [nameErr, setNameErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState("");
+  const templateParams = {
+    name,
+    email,
+  };
   const navigate = useNavigate();
   useEffect(() => {
     if (password === "") {
@@ -81,8 +86,11 @@ const SignUp = () => {
             }
           );
         }
-
         navigate("/login");
+        emailjs
+          .send("service_d4wkm4p", "template_bgca1f6", templateParams, {
+            publicKey: "b5RZu6ig2Ob4hSlXx",
+          })
       } catch (error) {
         toast.error(error.message, {
           duration: 4000,
