@@ -1,16 +1,23 @@
 {
   "commonTitle": {
-    "logInTitle": "Log In",
+    "logInTitle": "LogIn",
     "logInHeader": " LogIn to SimpleShare!",
     "signUpTitle": "Sign Up!",
     "signUpHeader": " Welcome to SimpleShare!",
-    "Name":"Name",
+    "Name": "Name",
     "Email": "Email",
     "Password": "Password",
-    " Please Enter Name":" Please Enter Name",
+    " Please Enter Name": " Please Enter Name",
     "Please Enter Email": "Please Enter Email",
     "Please Enter Password": "Please Enter Password",
     "logInButton": "LogIn",
-    "signUpButton": "SignUp"
+    "signUpButton": "SignUp",
+    "footerTitle": "@Copyright2024SimpleShare"
+  },
+  "navigationTitle": {
+    "Links": "Links",
+    "Profile Details": "Profile Details",
+    "DashBoard": "DashBoard",
+    "LogOut": "LogOut"
   }
 }

@@ -1,9 +1,9 @@
 {
   "commonTitle": {
     "logInTitle": "लॉग इन",
-    "logInHeader": "SimpleShare में लॉग इन करें!",
+    "logInHeader": "सिम्पलशेयर में लॉग इन करें!",
     "signUpTitle": "साइन अप करें!",
-    "signUpHeader": "SimpleShare में आपका स्वागत है!",
+    "signUpHeader": "सिम्पलशेयर में आपका स्वागत है!",
     "Name": "नाम",
     "Email": "ईमेल",
     "Password": "पासवर्ड",
@@ -11,6 +11,13 @@
     "Please Enter Email": "कृपया अपना ईमेल दर्ज करें",
     "Please Enter Password": "कृपया अपना पासवर्ड दर्ज करें",
     "logInButton": "लॉग इन करें",
-    "signUpButton": "साइन अप करें"
+    "signUpButton": "साइन अप करें",
+    "footerTitle": "© कॉपीराइट 2024 सिम्पलशेयर"
+  },
+  "navigationTitle": {
+    "Links": "लिंक्स",
+    "Profile Details": "प्रोफ़ाइल विवरण",
+    "DashBoard": "डैशबोर्ड",
+    "LogOut": "लॉग आउट"
   }
 }

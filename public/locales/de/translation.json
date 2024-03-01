@@ -1,17 +1,23 @@
 {
-    "commonTitle": {
-      "logInTitle": "Anmelden",
-      "logInHeader": "Melden Sie sich bei SimpleShare an!",
-      "signUpTitle": "Registrieren!",
-      "signUpHeader": "Willkommen bei SimpleShare!",
-      "Name": "Name",
-      "Email": "E-Mail",
-      "Password": "Passwort",
-      "Please Enter Name": "Bitte geben Sie Ihren Namen ein",
-      "Please Enter Email": "Bitte geben Sie Ihre E-Mail-Adresse ein",
-      "Please Enter Password": "Bitte geben Sie Ihr Passwort ein",
-      "logInButton": "Anmelden",
-      "signUpButton": "Registrieren"
-    }
+  "commonTitle": {
+    "logInTitle": "Anmelden",
+    "logInHeader": "Anmelden bei Einfache Freigabe!",
+    "signUpTitle": "Registrieren!",
+    "signUpHeader": "Willkommen bei Einfache Freigabe!",
+    "Name": "Name",
+    "Email": "E-Mail",
+    "Password": "Passwort",
+    "Please Enter Name": "Bitte geben Sie Ihren Namen ein",
+    "Please Enter Email": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+    "Please Enter Password": "Bitte geben Sie Ihr Passwort ein",
+    "logInButton": "Anmelden",
+    "signUpButton": "Registrieren",
+    "footerTitle": "© Urheberrecht 2024 Einfache Freigabe"
+  },
+  "navigationTitle": {
+    "Links": "Verknüpfungen",
+    "Profile Details": "Profil Details",
+    "DashBoard": "Dashboard",
+    "LogOut": "Abmelden"
   }
-  
+}

@@ -1,17 +1,23 @@
 {
-    "commonTitle": {
-      "logInTitle": "Iniciar sesión",
-      "logInHeader": "¡Inicia sesión en SimpleShare!",
-      "signUpTitle": "¡Regístrate!",
-      "signUpHeader": "¡Bienvenido a SimpleShare!",
-      "Name": "Nombre",
-      "Email": "Correo electrónico",
-      "Password": "Contraseña",
-      "Please Enter Name": "Por favor ingresa tu nombre",
-      "Please Enter Email": "Por favor ingresa tu correo electrónico",
-      "Please Enter Password": "Por favor ingresa tu contraseña",
-      "logInButton": "Iniciar sesión",
-      "signUpButton": "Registrarse"
-    }
+  "commonTitle": {
+    "logInTitle": "Iniciar sesión",
+    "logInHeader": "¡Inicia sesión en CompartirSimple!",
+    "signUpTitle": "¡Regístrate!",
+    "signUpHeader": "¡Bienvenido a CompartirSimple!",
+    "Name": "Nombre",
+    "Email": "Correo electrónico",
+    "Password": "Contraseña",
+    "Please Enter Name": "Por favor ingresa tu nombre",
+    "Please Enter Email": "Por favor ingresa tu correo electrónico",
+    "Please Enter Password": "Por favor ingresa tu contraseña",
+    "logInButton": "Iniciar sesión",
+    "signUpButton": "Registrarse",
+    "footerTitle": "© Urheberrecht 2024 CompartirSimple"
+  },
+  "navigationTitle": {
+    "Links": "Enlaces",
+    "Profile Details": "Detalles del perfil",
+    "DashBoard": "Tablero",
+    "LogOut": "Cerrar sesión"
   }
-  
+}

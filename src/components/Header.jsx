@@ -12,7 +12,7 @@ import conf, { account } from "../conf/config";
 import { useTranslation } from "react-i18next";
 const Header = ({ addDarkMode, darkMode }) => {
   const [open, setOpen] = useState(false);
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const userDetails = useSelector(
     (state) => state.AuthenticationReducer.userData
   );
@@ -35,7 +35,6 @@ const Header = ({ addDarkMode, darkMode }) => {
                 className="flex font-bold text-indigo-600 dark:text-white"
                 to="/"
               >
-                <span className="sr-only">Home</span>
                 <RiLinksFill size={30} /> <span>SimpleShare</span>
               </Link>
             </div>
@@ -52,7 +51,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                         size={20}
                         className="hover:text-indigo-600"
                       />
-                      Links
+                      {t("navigationTitle.Links")}
                     </NavLink>
                   </li>
 
@@ -62,7 +61,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                       to="/profileDetails"
                     >
                       <RiAccountPinCircleLine size={20} />
-                      Profile Details
+                      {t("navigationTitle.Profile Details")}
                     </NavLink>
                   </li>
                   {userDetails?.userId === conf.adminUserId &&
@@ -73,7 +72,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                           to="/dashboard"
                         >
                           <RiHomeOfficeLine size={20} />
-                          DashBoard
+                          {t("navigationTitle.DashBoard")}
                         </NavLink>
                       </li>
                     )}
@@ -105,7 +104,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                     to="/login"
                     onClick={LogOut}
                   >
-                    LogOut
+                    {t("navigationTitle.LogOut")}
                   </NavLink>
                 ) : (
                   <>
@@ -113,7 +112,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                       className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-medium text-white shadow hover:bg-slate-200 hover:text-indigo-600"
                       to="/login"
                     >
-                      Login
+                      {t("commonTitle.logInTitle")}
                     </NavLink>
 
                     <div className="hidden sm:flex">
@@ -121,7 +120,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                         className="rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-indigo-600 hover:bg-slate-200 hover:text-indigo-600"
                         to="/signup"
                       >
-                        Sign Up
+                        {t("commonTitle.signUpTitle")}
                       </NavLink>
                     </div>
                   </>
@@ -182,7 +181,6 @@ const Header = ({ addDarkMode, darkMode }) => {
                 className="flex font-bold text-indigo-600 dark:text-white"
                 to="/"
               >
-                <span className="sr-only">Home</span>
                 <RiLinksFill size={30} /> <span>SimpleShare</span>
               </Link>
             </div>
@@ -218,7 +216,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                   onClick={() => toggleNavigation()}
                 >
                   <RiLinksFill size={20} className="hover:text-indigo-600" />
-                  Links
+                  {t("navigationTitle.Links")}
                 </NavLink>
 
                 <NavLink
@@ -227,7 +225,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                   onClick={() => toggleNavigation()}
                 >
                   <RiAccountPinCircleLine size={20} />
-                  Profile Details
+                  {t("navigationTitle.Profile Details")}
                 </NavLink>
                 {userDetails?.userId === conf.adminUserId &&
                   userDetails?.providerUid === conf.adminUserEmail && (
@@ -237,7 +235,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                         to="/dashboard"
                       >
                         <RiHomeOfficeLine size={20} />
-                        DashBoard
+                        {t("navigationTitle.DashBoard")}
                       </NavLink>
                     </li>
                   )}
@@ -268,7 +266,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                         toggleNavigation();
                       }}
                     >
-                      LogOut
+                      {t("navigationTitle.LogOut")}
                     </NavLink>
                   </div>
                 ) : (
@@ -279,7 +277,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                         to="/login"
                         onClick={() => toggleNavigation()}
                       >
-                        Login
+                        {t("commonTitle.logInTitle")}
                       </NavLink>
                     </div>
                     <div className="p-2">
@@ -288,7 +286,7 @@ const Header = ({ addDarkMode, darkMode }) => {
                         to="/signup"
                         onClick={() => toggleNavigation()}
                       >
-                        Sign Up
+                        {t("commonTitle.signUpTitle")}
                       </NavLink>
                     </div>
                   </>
