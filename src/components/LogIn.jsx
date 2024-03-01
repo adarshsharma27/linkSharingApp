@@ -19,7 +19,7 @@ const LogIn = () => {
   const [passwordErr, setPasswordErr] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { t, i18n } = useTranslation();
+  const { t} = useTranslation();
   useEffect(() => {
     if (password === "") {
       setShowPassword(false);

@@ -1,11 +1,16 @@
 {
   "commonTitle": {
-    "logInTitle": "LogIn",
+    "logInTitle": "Log In",
     "logInHeader": " LogIn to SimpleShare!",
+    "signUpTitle": "Sign Up!",
+    "signUpHeader": " Welcome to SimpleShare!",
+    "Name":"Name",
     "Email": "Email",
     "Password": "Password",
+    " Please Enter Name":" Please Enter Name",
     "Please Enter Email": "Please Enter Email",
     "Please Enter Password": "Please Enter Password",
-    "logInButton": "LogIn"
+    "logInButton": "LogIn",
+    "signUpButton": "SignUp"
   }
 }

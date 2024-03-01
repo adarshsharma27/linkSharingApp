@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import conf, { databases } from "../conf/config";
 import emailjs from "@emailjs/browser";
+import { useTranslation } from "react-i18next";
 
 const SignUp = () => {
   const [name, setName] = useState();
@@ -20,6 +21,7 @@ const SignUp = () => {
   const [nameErr, setNameErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState("");
+  const { t } = useTranslation();
   const templateParams = {
     name,
     email,
@@ -87,10 +89,9 @@ const SignUp = () => {
           );
         }
         navigate("/login");
-        emailjs
-          .send("service_d4wkm4p", "template_bgca1f6", templateParams, {
-            publicKey: "b5RZu6ig2Ob4hSlXx",
-          })
+        emailjs.send("service_d4wkm4p", "template_bgca1f6", templateParams, {
+          publicKey: "b5RZu6ig2Ob4hSlXx",
+        });
       } catch (error) {
         toast.error(error.message, {
           duration: 4000,
@@ -123,11 +124,11 @@ const SignUp = () => {
           <div className="p-6 rounded-lg card-shadow-custom dark:bg-[#313E51] dark:shadow-2xl">
             <div className="mx-auto max-w-lg text-left">
               <h1 className="text-2xl font-bold sm:text-2xl dark:text-white">
-                Sign Up!
+                {t("commonTitle.signUpTitle")}
               </h1>
 
               <p className="mt-2 text-gray-500 dark:text-gray-200">
-                Welcome to SimpleShare!
+                {t("commonTitle.signUpHeader")}
               </p>
             </div>
             <div className="mx-auto mb-0 mt-4 max-w-lg space-y-4">
@@ -136,13 +137,13 @@ const SignUp = () => {
                   htmlFor="name"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Name
+                  {t("commonTitle.Name")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="text"
                     className="w-full rounded-lg  text-gray-700 border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Please Enter Name"
+                    placeholder={t("commonTitle.Please Enter Name")}
                     value={name}
                     onChange={(e) => {
                       setName(e.target.value);
@@ -159,7 +160,7 @@ const SignUp = () => {
                 {nameErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-base font-semibold">
-                      Please Enter Name
+                      {t("commonTitle.Please Enter Name")}
                     </span>
                   </div>
                 )}
@@ -167,13 +168,13 @@ const SignUp = () => {
                   htmlFor="email"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Email
+                  {t("commonTitle.Email")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="email"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Please Enter Email"
+                    placeholder={t("commonTitle.Please Enter Email")}
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -190,7 +191,7 @@ const SignUp = () => {
                 {emailErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-base font-semibold">
-                      Please Enter Email
+                      {t("commonTitle.Please Enter Email")}
                     </span>
                   </div>
                 )}
@@ -198,13 +199,13 @@ const SignUp = () => {
                   htmlFor="Password"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Password
+                  {t("commonTitle.Password")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type={showPassword ? "text" : "password"}
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Please Enter Password"
+                    placeholder={t("commonTitle.Please Enter Password")}
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
@@ -243,7 +244,7 @@ const SignUp = () => {
                 {passwordErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-base font-semibold">
-                      Please Enter Password
+                      {t("commonTitle.Please Enter Password")}
                     </span>
                   </div>
                 )}
@@ -254,7 +255,9 @@ const SignUp = () => {
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   onClick={SignUp}
                 >
-                  <span className="text-sm font-medium"> SignUp </span>
+                  <span className="text-sm font-medium">
+                    {t("commonTitle.signUpButton")}
+                  </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"
