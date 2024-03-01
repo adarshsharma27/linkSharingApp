@@ -12,12 +12,44 @@
     "Please Enter Password": "Por favor ingresa tu contraseña",
     "logInButton": "Iniciar sesión",
     "signUpButton": "Registrarse",
-    "footerTitle": "© Urheberrecht 2024 CompartirSimple"
+    "footerTitle": "© Urheberrecht 2024 CompartirSimple",
+    "linksTitle": "¡Personaliza tus enlaces!",
+    "linksHeader": "¡Agrega enlaces sociales a tu perfil!",
+    "DetailsTitle": "¡Detalles del perfil!",
+    "DetailsHeader": "¡Agrega tus detalles para dar un toque personal a tu perfil!"
   },
   "navigationTitle": {
     "Links": "Enlaces",
     "Profile Details": "Detalles del perfil",
     "DashBoard": "Tablero",
     "LogOut": "Cerrar sesión"
+  },
+  "linksTitle": {
+    "Link GitHub#": "Enlazar GitHub#",
+    "Link LinkedIn#": "Enlazar LinkedIn#",
+    "Link Instagram#": "Enlazar Instagram#",
+    "Link Facebook#": "Enlazar Facebook#",
+    "Link Twitter#": "Enlazar Twitter#",
+    "First Name": "Nombre",
+    "Last Name": "Apellido",
+    "Please Enter Github Url": "Por favor, ingresa la URL de GitHub",
+    "Please Enter LinkedIn Url": "Por favor, ingresa la URL de LinkedIn",
+    "Please Enter Instagram Url": "Por favor, ingresa la URL de Instagram",
+    "Please Enter Facebook Url": "Por favor, ingresa la URL de Facebook",
+    "Please Enter Twitter Url": "Por favor, ingresa la URL de Twitter",
+    "Please Enter First Name": "Por favor, ingresa tu nombre",
+    "Please Enter Last Name": "Por favor, ingresa tu apellido",
+    "Profile Picture": "Foto de perfil",
+    "Click to upload": "Haz clic para cargar",
+    "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG o GIF (MAX-2MB)",
+    "Please Upload Profile Image": "Por favor, carga la imagen de perfil",
+    "Save": "Guardar"
+  },
+  "previewTitle": {
+    "Github": "Github",
+    "LinkedIn": "LinkedIn",
+    "Instagram": "Instagram",
+    "Facebook": "Facebook",
+    "Twitter": "Twitter"
   }
 }

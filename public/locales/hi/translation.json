@@ -12,12 +12,44 @@
     "Please Enter Password": "कृपया अपना पासवर्ड दर्ज करें",
     "logInButton": "लॉग इन करें",
     "signUpButton": "साइन अप करें",
-    "footerTitle": "© कॉपीराइट 2024 सिम्पलशेयर"
+    "footerTitle": "© कॉपीराइट 2024 सिम्पलशेयर",
+    "linksTitle": "अपने लिंक कस्टमाइज़ करें!",
+    "linksHeader": "प्रोफ़ाइल में सोशल लिंक जोड़ें!",
+    "DetailsTitle": "प्रोफ़ाइल विवरण!",
+    "DetailsHeader": "अपना विवरण जोड़ें ताकि आपकी प्रोफ़ाइल को एक व्यक्तिगत छूट मिले!"
   },
   "navigationTitle": {
     "Links": "लिंक्स",
     "Profile Details": "प्रोफ़ाइल विवरण",
     "DashBoard": "डैशबोर्ड",
     "LogOut": "लॉग आउट"
+  },
+  "linksTitle": {
+    "Link GitHub#": "गिटहब लिंक#",
+    "Link LinkedIn#": "लिंक्डइन लिंक#",
+    "Link Instagram#": "इंस्टाग्राम लिंक#",
+    "Link Facebook#": "फेसबुक लिंक#",
+    "Link Twitter#": "ट्विटर लिंक#",
+    "First Name": "पहला नाम",
+    "Last Name": "उपनाम",
+    "Please Enter Github Url": "कृपया गिटहब यूआरएल दर्ज करें",
+    "Please Enter LinkedIn Url": "कृपया लिंक्डइन यूआरएल दर्ज करें",
+    "Please Enter Instagram Url": "कृपया इंस्टाग्राम यूआरएल दर्ज करें",
+    "Please Enter Facebook Url": "कृपया फेसबुक यूआरएल दर्ज करें",
+    "Please Enter Twitter Url": "कृपया ट्विटर यूआरएल दर्ज करें",
+    "Please Enter First Name": "कृपया अपना पहला नाम दर्ज करें",
+    "Please Enter Last Name": "कृपया अपना उपनाम दर्ज करें",
+    "Profile Picture": "प्रोफ़ाइल तस्वीर",
+    "Click to upload": "अपलोड करने के लिए क्लिक करें",
+    "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG या GIF (MAX-2MB)",
+    "Please Upload Profile Image": "कृपया प्रोफ़ाइल छवि अपलोड करें",
+    "Save": "सहेजें"
+  },
+  "previewTitle": {
+    "Github": "गिटहब",
+    "LinkedIn": "लिंक्डइन",
+    "Instagram": "इंस्टाग्राम",
+    "Facebook": "फेसबुक",
+    "Twitter": "ट्विटर"
   }
 }

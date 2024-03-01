@@ -11,12 +11,14 @@ import conf, { databases } from "../conf/config";
 import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
+import { useTranslation } from "react-i18next";
 
 const Preview = () => {
   // const userProfileLinksDetails = useSelector((state) => state.profileReducer); fetching from redux
   const [userProfileLinksDetails, setUserProfileLinksDetails] = useState();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const { t } = useTranslation();
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -78,7 +80,10 @@ const Preview = () => {
                   target="_blank"
                 >
                   <FaGithub size={20} />
-                  <span className="text-sm font-medium"> Github </span>
+                  <span className="text-sm font-medium">
+                    {" "}
+                    {t("previewTitle.Github")}{" "}
+                  </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"
@@ -103,7 +108,9 @@ const Preview = () => {
                   target="_blank"
                 >
                   <FaLinkedin size={20} />
-                  <span className="text-sm font-medium"> LinkedIn </span>
+                  <span className="text-sm font-medium">
+                    {t("previewTitle.LinkedIn")}{" "}
+                  </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"
@@ -128,7 +135,9 @@ const Preview = () => {
                   target="_blank"
                 >
                   <FaInstagram size={20} />
-                  <span className="text-sm font-medium">Instagram</span>
+                  <span className="text-sm font-medium">
+                    {t("previewTitle.Instagram")}
+                  </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"
@@ -153,7 +162,10 @@ const Preview = () => {
                   target="_blank"
                 >
                   <FaSquareFacebook size={20} />
-                  <span className="text-sm font-medium"> Facebook </span>
+                  <span className="text-sm font-medium">
+                    {" "}
+                    {t("previewTitle.Facebook")}{" "}
+                  </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"
@@ -178,7 +190,10 @@ const Preview = () => {
                   target="_blank"
                 >
                   <FaSquareXTwitter size={20} />
-                  <span className="text-sm font-medium"> Twitter </span>
+                  <span className="text-sm font-medium">
+                    {" "}
+                    {t("previewTitle.Twitter")}{" "}
+                  </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"

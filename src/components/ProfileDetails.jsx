@@ -14,6 +14,7 @@ import toast from "react-hot-toast";
 import conf from "../conf/config";
 import { ID, databases, storage } from "../conf/config";
 import { getFileId } from "../features/UploadFileIdSlice";
+import { useTranslation } from "react-i18next";
 
 const ProfileDetails = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const ProfileDetails = () => {
   const [lastNameErr, setLastNameErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const [imageErr, setImageErr] = useState(false);
+  const { t } = useTranslation();
   const userProfileDetails = useSelector((state) => state?.profileReducer);
   const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
   const UploadImageId = useSelector(
@@ -273,13 +275,13 @@ const ProfileDetails = () => {
                   for="firstName"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  First Name
+                  {t("linksTitle.First Name")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="text"
                     className="w-full rounded-lg  text-gray-700 border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-sm outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Enter First Name"
+                    placeholder={t("linksTitle.Please Enter First Name")}
                     value={firstName}
                     onChange={(e) => {
                       setFirstName(e.target.value);
@@ -296,7 +298,7 @@ const ProfileDetails = () => {
                 {firstNameErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter First Name
+                      {t("linksTitle.Please Enter First Name")}
                     </span>
                   </div>
                 )}
@@ -304,13 +306,13 @@ const ProfileDetails = () => {
                   for="lastName"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Last Name
+                  {t("linksTitle.Last Name")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="text"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Enter Last Name"
+                    placeholder={t("linksTitle.Please Enter Last Name")}
                     value={lastName}
                     onChange={(e) => {
                       setLastName(e.target.value);
@@ -327,7 +329,7 @@ const ProfileDetails = () => {
                 {lastNameErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter Last Name
+                      {t("linksTitle.Please Enter Last Name")}
                     </span>
                   </div>
                 )}
@@ -335,13 +337,13 @@ const ProfileDetails = () => {
                   for="email"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Email
+                  {t("commonTitle.Email")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="email"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Please Enter Email"
+                    placeholder={t("commonTitle.Please Enter Email")}
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -358,7 +360,7 @@ const ProfileDetails = () => {
                 {emailErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter Email
+                      {t("commonTitle.Please Enter Email")}
                     </span>
                   </div>
                 )}
@@ -366,7 +368,7 @@ const ProfileDetails = () => {
                   for="email"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Profile Picture
+                  {t("linksTitle.Profile Picture")}
                 </label>
 
                 {hideFileUpload && !imageUrl && (
@@ -381,13 +383,15 @@ const ProfileDetails = () => {
                           className="text-indigo-600 dark:text-sky-500"
                         />
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span>{" "}
+                          <span className="font-semibold">
+                            {t("linksTitle.Click to upload")}
+                          </span>{" "}
                           <span className="text-indigo-600 font-bold lg:text-xl text-base dark:text-sky-500">
-                            Profile Picture
+                            {t("linksTitle.Profile Picture")}
                           </span>
                         </p>
                         <p className="text-xs text-gray-500 dark:text-gray-400">
-                          SVG, PNG, JPG or GIF (MAX-2MB)
+                          {t("linksTitle.SVG, PNG, JPG or GIF (MAX-2MB)")}
                         </p>
                       </div>
                       <input
@@ -416,7 +420,7 @@ const ProfileDetails = () => {
                 {imageErr && !imageUrl && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Upload Profile Image
+                      {t("linksTitle.Please Upload Profile Image")}
                     </span>
                   </div>
                 )}
@@ -427,7 +431,10 @@ const ProfileDetails = () => {
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   onClick={userLinksProfileDetails}
                 >
-                  <span className="text-sm font-medium"> Save </span>
+                  <span className="text-sm font-medium">
+                    {" "}
+                    {t("linksTitle.Save")}{" "}
+                  </span>
                   <svg
                     className="h-5 w-5 rtl:rotate-180"
                     xmlns="http://www.w3.org/2000/svg"

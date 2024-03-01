@@ -12,12 +12,44 @@
     "Please Enter Password": "Please Enter Password",
     "logInButton": "LogIn",
     "signUpButton": "SignUp",
-    "footerTitle": "@Copyright2024SimpleShare"
+    "footerTitle": "@Copyright2024SimpleShare",
+    "linksTitle": "Customize Your Links!",
+    "linksHeader": "Add  Social Links to Profile",
+    "DetailsTitle": "Profile Details!",
+    "DetailsHeader": "Add your details to create a person touch to you Profile"
   },
   "navigationTitle": {
     "Links": "Links",
     "Profile Details": "Profile Details",
     "DashBoard": "DashBoard",
     "LogOut": "LogOut"
+  },
+  "linksTitle": {
+    "Link GitHub#": "Link GitHub#",
+    "Link LinkedIn#": "Link LinkedIn#",
+    "Link Instagram#": "Link Instagram#",
+    "Link Facebook#": "Link Facebook#",
+    "Link Twitter#": "Link Twitter#",
+    "First Name": "First Name",
+    "Last Name": "Last Name",
+    "Please Enter Github Url": "Please Enter Github Url",
+    "Please Enter LinkedIn Url": "Please Enter LinkedIn Url",
+    "Please Enter Instagram Url": "Please Enter Instagram Url",
+    "Please Enter Facebook Url": "Please Enter Facebook Url",
+    "Please Enter Twitter Url": "Please Enter Twitter Url",
+    "Please Enter First Name": "Please Enter First Name",
+    "Please Enter Last Name": "Please Enter Last Name",
+    "Profile Picture": "Profile Picture",
+    "Click to upload": "Click to upload",
+    "SVG, PNG, JPG or GIF (MAX-2MB)": "SVG, PNG, JPG or GIF (MAX-2MB)",
+    "Please Upload Profile Image": "Please Upload Profile Image",
+    "Save": "Save"
+  },
+  "previewTitle": {
+    "Github": "Github",
+    "LinkedIn": "LinkedIn",
+    "Instagram": "Instagram",
+    "Facebook": "Facebook",
+    "Twitter": "Twitter"
   }
 }

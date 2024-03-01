@@ -10,6 +10,7 @@ import {
   FaSquareXTwitter,
 } from "react-icons/fa6";
 import toast from "react-hot-toast";
+import { useTranslation } from "react-i18next";
 const ProfileLinks = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const ProfileLinks = () => {
   const [instaGramUrlErr, setInstaGramUrlErr] = useState(false);
   const [faceBookUrlErr, setFaceBookUrlErr] = useState(false);
   const [twitterUrlErr, setTwitterUrlErr] = useState(false);
-
+  const { t } = useTranslation();
   const userProfileLinksDetails = useSelector((state) => state?.profileReducer);
   const userDetails = useSelector(
     (state) => state.AuthenticationReducer.userData
@@ -124,10 +125,13 @@ const ProfileLinks = () => {
           <div className="p-6 rounded-lg card-shadow-custom dark:bg-[#313E51] dark:shadow-2xl">
             <div className="mx-auto max-w-lg text-left">
               <h1 className="text-2xl font-bold sm:text-2xl dark:text-white">
-                Customize Your Links!
+                {t("commonTitle.linksTitle")}
               </h1>
 
-              <p className="mt-2 text-gray-500 dark:text-gray-200">text</p>
+              <p className="mt-2 text-gray-500 dark:text-gray-200">
+                {" "}
+                {t("commonTitle.linksHeader")}
+              </p>
             </div>
             <div className="mx-auto mb-0 mt-8 max-w-lg space-y-4">
               <div>
@@ -135,13 +139,13 @@ const ProfileLinks = () => {
                   htmlFor="github"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Link GitHub#
+                  {t("linksTitle.Link GitHub#")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
                     className="w-full rounded-lg  text-gray-700 border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Enter Github Url"
+                    placeholder={t("linksTitle.Please Enter Github Url")}
                     value={gitHubUrl}
                     onChange={(e) => {
                       setGitHubUrl(e.target.value);
@@ -155,7 +159,7 @@ const ProfileLinks = () => {
                 {gitHubUrlErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter GitHub Url
+                      {t("linksTitle.Please Enter Github Url")}
                     </span>
                   </div>
                 )}
@@ -163,13 +167,13 @@ const ProfileLinks = () => {
                   htmlFor="linkedin"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Link LinkedIn#
+                  {t("linksTitle.Link LinkedIn#")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Enter LinkedIn Url"
+                    placeholder={t("linksTitle.Please Enter LinkedIn Url")}
                     value={linkedInUrl}
                     onChange={(e) => {
                       setLinkedInUrl(e.target.value);
@@ -186,7 +190,7 @@ const ProfileLinks = () => {
                 {linkedInUrlErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter LinkedIn Url
+                      {t("linksTitle.Please Enter LinkedIn Url")}
                     </span>
                   </div>
                 )}
@@ -194,13 +198,13 @@ const ProfileLinks = () => {
                   htmlFor="youtube"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Link Instagram#
+                  {t("linksTitle.Link Instagram#")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Enter Twitter Url"
+                    placeholder={t("linksTitle.Please Enter Instagram Url")}
                     value={instaGramUrl}
                     onChange={(e) => {
                       setInstaGramUrl(e.target.value);
@@ -217,7 +221,7 @@ const ProfileLinks = () => {
                 {instaGramUrlErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter Instagram Url
+                      {t("linksTitle.Please Enter Instagram Url")}
                     </span>
                   </div>
                 )}
@@ -225,13 +229,13 @@ const ProfileLinks = () => {
                   htmlFor="facebook"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Link Facebook#
+                  {t("linksTitle.Link Facebook#")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Enter Facebook Url"
+                    placeholder={t("linksTitle.Please Enter Facebook Url")}
                     value={faceBookUrl}
                     onChange={(e) => {
                       setFaceBookUrl(e.target.value);
@@ -248,7 +252,7 @@ const ProfileLinks = () => {
                 {faceBookUrlErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter Facebook Url
+                      {t("linksTitle.Please Enter Facebook Url")}
                     </span>
                   </div>
                 )}
@@ -256,13 +260,13 @@ const ProfileLinks = () => {
                   htmlFor="facebook"
                   className="text-sm font-medium text-gray-600 dark:text-white"
                 >
-                  Link Twitter#
+                  {t("linksTitle.Link Twitter#")}
                 </label>
                 <div className="relative my-2">
                   <input
                     type="url"
                     className="w-full rounded-lg border-gray-200 dark:bg-[#3C4D67] dark:text-white p-4 pe-12 text-sm shadow-md  outline-none focus:ring-1 focus:ring-indigo-600"
-                    placeholder="Enter Twitter Url"
+                    placeholder={t("linksTitle.Please Enter Twitter Url")}
                     value={twitterUrl}
                     onChange={(e) => {
                       setTwitterUrl(e.target.value);
@@ -279,7 +283,7 @@ const ProfileLinks = () => {
                 {twitterUrlErr && (
                   <div className="pt-2">
                     <span className="text-red-400 text-sm font-semibold">
-                      Please Enter Twitter Url
+                      {t("linksTitle.Please Enter Twitter Url")}
                     </span>
                   </div>
                 )}
@@ -290,7 +294,10 @@ const ProfileLinks = () => {
                   className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   onClick={() => addProfileLinks()}
                 >
-                  <span className="text-sm font-medium"> Save </span>
+                  <span className="text-sm font-medium">
+                    {" "}
+                    {t("linksTitle.Save")}{" "}
+                  </span>
 
                   <svg
                     className="h-5 w-5 rtl:rotate-180"
