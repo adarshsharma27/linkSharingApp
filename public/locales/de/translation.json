@@ -51,5 +51,12 @@
     "Instagram": "Instagram",
     "Facebook": "Facebook",
     "Twitter": "Twitter"
+  },
+  "DashBoardTitle": {
+    "DashBoard": "Dashboard",
+    "Total Users": "Gesamtbenutzer",
+    "Total Profiles": "Gesamtprofile",
+    "Users Details": "Benutzerdetails",
+    "Id": "Id"
   }
 }

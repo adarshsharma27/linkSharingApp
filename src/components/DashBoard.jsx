@@ -3,10 +3,12 @@ import DashBoardCharts from "./DashBoardCharts";
 import DashBoardTable from "./DashBoardTable";
 import { FaUsers, FaIdCardClip } from "react-icons/fa6";
 import conf, { databases } from "../conf/config";
+import { useTranslation } from "react-i18next";
 const DashBoard = () => {
   const [users, setUsers] = useState([]);
   const [profiles, setProfiles] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const { t } = useTranslation();
   useEffect(() => {
     const getUsers = async () => {
       try {
@@ -40,7 +42,7 @@ const DashBoard = () => {
           <div className="flex flex-col">
             <div className="flex flex-wrap sm:flex-row flex-col py-6">
               <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl mb-2 sm:mb-0 dark:text-white">
-                DashBoard
+                {t("DashBoardTitle.DashBoard")}
               </h1>
             </div>
           </div>
@@ -57,7 +59,7 @@ const DashBoard = () => {
               </h2>
 
               <p className="text-xl font-bold leading-relaxed  text-gray-600  dark:text-gray-300 capitalize">
-                Total Users
+                {t("DashBoardTitle.Total Users")}
               </p>
             </div>
             <div className="py-6 sm:mb-0 mb-6 card-shadow-custom rounded-lg flex flex-wrap gap-2  items-center flex-col dark:shadow-2xl">
@@ -72,13 +74,13 @@ const DashBoard = () => {
               </h2>
 
               <p className="text-xl font-bold leading-relaxed text-gray-600 dark:text-gray-300 capitalize">
-                Total Profiles
+                {t("DashBoardTitle.Total Profiles")}
               </p>
             </div>
           </div>
           <div className="flex flex-wrap sm:flex-row flex-col pt-6">
             <h1 className="sm:w-2/5 text-gray-900 font-bold font-montserrat text-3xl  sm:mb-0 dark:text-white">
-              Users Details
+              {t("DashBoardTitle.Users Details")}
             </h1>
           </div>
 

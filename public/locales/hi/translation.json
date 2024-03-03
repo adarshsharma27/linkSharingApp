@@ -51,5 +51,12 @@
     "Instagram": "इंस्टाग्राम",
     "Facebook": "फेसबुक",
     "Twitter": "ट्विटर"
+  },
+  "DashBoardTitle": {
+    "DashBoard": "डैशबोर्ड",
+    "Total Users": "कुल उपयोगकर्ता",
+    "Total Profiles": "कुल प्रोफ़ाइल",
+    "Users Details": "उपयोगकर्ता विवरण",
+    "Id": "आईडी"
   }
 }

@@ -1,8 +1,10 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { useTranslation } from "react-i18next";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DashBoardCharts = ({ users, profiles }) => {
+  const { t } = useTranslation();
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -27,7 +29,10 @@ const DashBoardCharts = ({ users, profiles }) => {
   };
 
   const data = {
-    labels: ["Total Users", "Total Profiles"],
+    labels: [
+      t("DashBoardTitle.Total Users"),
+      t("DashBoardTitle.Total Profiles"),
+    ],
     datasets: [
       {
         label: "Application Record",
