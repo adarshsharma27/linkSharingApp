@@ -35,7 +35,10 @@ const ProfileDetails = () => {
   const UploadImageId = useSelector(
     (state) => state?.UploadFileIdReducer.fileId
   );
-
+  const { userId } = useSelector(
+    (state) => state.AuthenticationReducer.userData
+  );
+  const updateMode = useSelector((state) => state.updateModeReducer.updateMode);
   useEffect(() => {
     setFirstName(userProfileDetails?.profileDetails?.firstName);
     setLastName(userProfileDetails?.profileDetails?.lastName);
@@ -193,39 +196,75 @@ const ProfileDetails = () => {
       dispatch(addUserDetails({ firstName, lastName, email, imageUrl }));
 
       try {
-        const profileResponse = await databases.createDocument(
-          conf.databaseId,
-          conf.collectionId,
-          ID.unique(),
-          {
-            gitHubUrl,
-            linkedInUrl,
-            instaGramUrl,
-            faceBookUrl,
-            faceBookUrl,
-            twitterUrl,
-            firstName,
-            lastName,
-            email,
-            imageUrl,
-          }
-        );
-        toast.success("Profile Created Successfully", {
-          duration: 4000,
-          position: "top-right",
-          style: {
-            background: "#fff",
-            color: "#252525",
-            padding: "20px",
-            fontWeight: "700",
-            boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
-            borderBottom: "3px solid #4F46E5",
-            borderRadius: "3px",
-            fontFamily: "Poppins, sans-serif",
-          },
-        });
-        NotificationAudio();
-        navigate(`/preview/${profileResponse?.$id}`);
+        if (updateMode === true) {
+          const profileResponse = await databases.updateDocument(
+            conf.databaseId,
+            conf.collectionId,
+            userId,
+            {
+              gitHubUrl,
+              linkedInUrl,
+              instaGramUrl,
+              faceBookUrl,
+              faceBookUrl,
+              twitterUrl,
+              firstName,
+              lastName,
+              email,
+              imageUrl,
+            }
+          );
+          toast.success("Profile Updated Successfully", {
+            duration: 4000,
+            position: "top-right",
+            style: {
+              background: "#fff",
+              color: "#252525",
+              padding: "20px",
+              fontWeight: "700",
+              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+              borderBottom: "3px solid #4F46E5",
+              borderRadius: "3px",
+              fontFamily: "Poppins, sans-serif",
+            },
+          });
+          NotificationAudio();
+          navigate(`/preview/${profileResponse?.$id}`);
+        } else {
+          const profileResponse = await databases.createDocument(
+            conf.databaseId,
+            conf.collectionId,
+            userId,
+            {
+              gitHubUrl,
+              linkedInUrl,
+              instaGramUrl,
+              faceBookUrl,
+              faceBookUrl,
+              twitterUrl,
+              firstName,
+              lastName,
+              email,
+              imageUrl,
+            }
+          );
+          toast.success("Profile Created Successfully", {
+            duration: 4000,
+            position: "top-right",
+            style: {
+              background: "#fff",
+              color: "#252525",
+              padding: "20px",
+              fontWeight: "700",
+              boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.1)",
+              borderBottom: "3px solid #4F46E5",
+              borderRadius: "3px",
+              fontFamily: "Poppins, sans-serif",
+            },
+          });
+          NotificationAudio();
+          navigate(`/preview/${profileResponse?.$id}`);
+        }
       } catch (error) {
         toast.error(error.message, {
           duration: 4000,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUserLinks } from "../features/profileSlice";
+import { addUserDetails, addUserLinks } from "../features/profileSlice";
 import { useNavigate } from "react-router-dom";
 import {
   FaSquareFacebook,
@@ -11,6 +11,8 @@ import {
 } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
+import conf, { databases } from "../conf/config";
+import { getUpdateMode } from "../features/UpdateModeSlice";
 const ProfileLinks = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,6 +31,47 @@ const ProfileLinks = () => {
   const userDetails = useSelector(
     (state) => state.AuthenticationReducer.userData
   );
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        const resp = await databases.getDocument(
+          conf.databaseId,
+          conf.collectionId,
+          userDetails.userId
+        );
+        if (resp) {
+          const {
+            gitHubUrl,
+            linkedInUrl,
+            instaGramUrl,
+            faceBookUrl,
+            twitterUrl,
+            firstName,
+            lastName,
+            email,
+            imageUrl,
+          } = resp;
+          dispatch(
+            addUserLinks({
+              gitHubUrl,
+              linkedInUrl,
+              instaGramUrl,
+              faceBookUrl,
+              twitterUrl,
+            })
+          );
+          dispatch(addUserDetails({ firstName, lastName, email, imageUrl }));
+          dispatch(getUpdateMode(true));
+        }
+      } catch (error) {}
+    };
+    if (
+      userProfileLinksDetails?.profileLinks.length === 0 &&
+      userProfileLinksDetails?.profileDetails.length === 0
+    ) {
+      getProfile();
+    }
+  }, []);
   useEffect(() => {
     setGitHubUrl(userProfileLinksDetails?.profileLinks?.gitHubUrl);
     setLinkedInUrl(userProfileLinksDetails?.profileLinks?.linkedInUrl);
