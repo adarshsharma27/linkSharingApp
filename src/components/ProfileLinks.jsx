@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import { useTranslation } from "react-i18next";
 import conf, { databases } from "../conf/config";
 import { getUpdateMode } from "../features/UpdateModeSlice";
+import { getFileId } from "../features/UploadFileIdSlice";
 const ProfileLinks = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const ProfileLinks = () => {
             lastName,
             email,
             imageUrl,
+            uploadFileId,
           } = resp;
           dispatch(
             addUserLinks({
@@ -61,6 +63,7 @@ const ProfileLinks = () => {
             })
           );
           dispatch(addUserDetails({ firstName, lastName, email, imageUrl }));
+          dispatch(getFileId(uploadFileId));
           dispatch(getUpdateMode(true));
         }
       } catch (error) {}

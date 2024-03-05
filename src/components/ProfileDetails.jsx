@@ -212,6 +212,7 @@ const ProfileDetails = () => {
               lastName,
               email,
               imageUrl,
+              UploadImageId,
             }
           );
           toast.success("Profile Updated Successfully", {
@@ -246,6 +247,7 @@ const ProfileDetails = () => {
               lastName,
               email,
               imageUrl,
+              UploadImageId,
             }
           );
           toast.success("Profile Created Successfully", {
