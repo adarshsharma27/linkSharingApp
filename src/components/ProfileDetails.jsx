@@ -301,13 +301,11 @@ const ProfileDetails = () => {
           <div className="p-6 rounded-lg card-shadow-custom dark:bg-[#313E51] dark:shadow-2xl">
             <div className="mx-auto max-w-lg text-left">
               <h1 className="text-2xl font-bold sm:text-2xl dark:text-white">
-                Customize Your Links!
+              {t("commonTitle.DetailsTitle")}
               </h1>
 
               <p className="mt-2 text-gray-500 dark:text-gray-200">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Et
-                libero nulla eaque error neque ipsa culpa autem, at itaque
-                nostrum!
+              {t("commonTitle.DetailsHeader")}
               </p>
             </div>
             <div className="mx-auto mb-0 mt-8 max-w-lg space-y-4">
