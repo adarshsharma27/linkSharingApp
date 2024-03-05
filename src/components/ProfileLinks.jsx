@@ -51,7 +51,8 @@ const ProfileLinks = () => {
             lastName,
             email,
             imageUrl,
-            uploadFileId,
+            UploadImageId,
+            $id,
           } = resp;
           dispatch(
             addUserLinks({
@@ -63,8 +64,9 @@ const ProfileLinks = () => {
             })
           );
           dispatch(addUserDetails({ firstName, lastName, email, imageUrl }));
-          dispatch(getFileId(uploadFileId));
+          dispatch(getFileId(UploadImageId));
           dispatch(getUpdateMode(true));
+          navigate(`/preview/${$id}`);
         }
       } catch (error) {}
     };

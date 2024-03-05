@@ -10,12 +10,12 @@ const Footer = () => {
       <footer className="bg-gray-100 font-poppins dark:bg-[#2D3949]">
         <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="flex justify-center text-indigo-600">
-            <to
+            <Link
               className="flex font-bold text-indigo-600 dark:text-white"
               to="/"
             >
               <RiLinksFill size={30} /> <span>SimpleShare</span>
-            </to>
+            </Link>
           </div>
 
           <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">

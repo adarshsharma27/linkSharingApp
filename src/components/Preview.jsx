@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 import Loader from "./Loader";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const Preview = () => {
   // const userProfileLinksDetails = useSelector((state) => state.profileReducer); fetching from redux
@@ -19,6 +20,9 @@ const Preview = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const { t } = useTranslation();
+  const userDetails = useSelector(
+    (state) => state.AuthenticationReducer.userData
+  );
   useEffect(() => {
     const getProfile = async () => {
       try {
@@ -63,9 +67,11 @@ const Preview = () => {
                 src={userProfileLinksDetails?.imageUrl}
                 alt="Bonnie image"
               />
-              <div className="bg-indigo-600  dark:bg-sky-500 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
-                <FaShare size={22} onClick={() => shareProfileUrl()} />
-              </div>
+              {userDetails?.userId === userProfileLinksDetails?.$id && (
+                <div className="bg-indigo-600  dark:bg-sky-500 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
+                  <FaShare size={22} onClick={() => shareProfileUrl()} />
+                </div>
+              )}
               <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white ">
                 {userProfileLinksDetails?.firstName}{" "}
                 {userProfileLinksDetails?.lastName}

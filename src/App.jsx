@@ -42,12 +42,12 @@ function App() {
       <Routes>
         <Route element={<ProtectedRoutes isAuthenticated={user} />}>
           <Route path="/profileDetails" element={<ProfileDetails />} />
-          <Route path="/preview/:id" element={<Preview />} />
           <Route path="/dashboard" element={<DashBoard />} />
         </Route>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/preview/:id" element={<Preview />} />
       </Routes>
       <Toaster />
       <Footer />
