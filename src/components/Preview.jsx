@@ -6,6 +6,11 @@ import {
   FaInstagram,
   FaSquareXTwitter,
   FaShare,
+  FaFacebook,
+  FaWhatsapp,
+  FaXTwitter,
+  FaClipboard,
+  FaEnvelopeOpen,
 } from "react-icons/fa6";
 import conf, { databases } from "../conf/config";
 import { useParams } from "react-router-dom";
@@ -13,11 +18,14 @@ import toast from "react-hot-toast";
 import Loader from "./Loader";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { NotificationAudio } from "../utils/NotificationAudio";
 
 const Preview = () => {
   // const userProfileLinksDetails = useSelector((state) => state.profileReducer); fetching from redux
   const [userProfileLinksDetails, setUserProfileLinksDetails] = useState();
   const [loading, setLoading] = useState(true);
+  const [share, setShare] = useState(false);
+  const [disableShare, setDisableShare] = useState(false);
   const { id } = useParams();
   const { t } = useTranslation();
   const userDetails = useSelector(
@@ -38,9 +46,15 @@ const Preview = () => {
     getProfile();
   }, []);
   const shareProfileUrl = () => {
+    setShare(true);
+    setDisableShare(true);
+    NotificationAudio();
+  };
+  const copyToClipBoard = () => {
     window.navigator.clipboard.writeText(window.location.href);
+    NotificationAudio();
     toast.success("Profile Link Copied Successfully", {
-      duration: 4000,
+      duration: 1000,
       position: "top-right",
       style: {
         background: "#fff",
@@ -53,6 +67,8 @@ const Preview = () => {
         fontFamily: "Poppins, sans-serif",
       },
     });
+    setShare(false);
+    setDisableShare(false);
   };
   return (
     <>
@@ -68,9 +84,15 @@ const Preview = () => {
                 alt="Bonnie image"
               />
               {userDetails?.userId === userProfileLinksDetails?.$id && (
-                <div className="bg-indigo-600  dark:bg-sky-500 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out">
-                  <FaShare size={22} onClick={() => shareProfileUrl()} />
-                </div>
+                <button
+                  className="bg-indigo-600  dark:bg-sky-500 absolute right-[30px] top-[30px]  text-white p-2 rounded cursor-pointer  scale-100 hover:scale-110 transition-all duration-100 ease-in-out disabled:opacity-75 disabled:cursor-not-allowed"
+                  disabled={disableShare}
+                  onClick={() => {
+                    shareProfileUrl();
+                  }}
+                >
+                  <FaShare size={22} />
+                </button>
               )}
               <h5 className="mb-1 text-2xl font-bold text-gray-600 dark:text-white ">
                 {userProfileLinksDetails?.firstName}{" "}
@@ -221,6 +243,90 @@ const Preview = () => {
           </div>
         )}
       </div>
+      {/* Social Share  Start*/}
+      <div
+        className={
+          share === true
+            ? "rounded-lg md:px-8  px-4 py-4 text-center bg-white  card-shadow-custom fixed top-[5rem] right-0  transition-all duration-2000 ease-in-out"
+            : "rounded-lg md:px-8 px-4 py-4 text-center bg-white  card-shadow-custom transition-all duration-2000 ease-in-out fixed top-[5rem] right-[-400px]"
+        }
+      >
+        <div className="md:flex md:items-center md:justify-between  py-2">
+          <h3 className="md:text-lg md:block hidden text-base text-gray-700 font-poppins font-bold dark:text-gray-400">
+            Share this Profile Via
+          </h3>
+          <div
+            className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-700 dark:hover:text-white cursor-pointer"
+            onClick={() => {
+              setShare(false);
+              setDisableShare(false);
+            }}
+          >
+            <svg
+              className="w-3 h-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+              />
+            </svg>
+            <span className="sr-only">Close modal</span>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-end md:flex-row  justify-center md:gap-4 gap-3 py-2">
+          <div
+            className="inline-flex items-center justify-center cursor-copy  w-10 h-10 rounded-full border border-indigo-600  bg-indigo-600  text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+            onClick={() => copyToClipBoard()}
+          >
+            <FaClipboard size={20} />
+          </div>
+
+          <a
+            href={`https://api.whatsapp.com/send?text=${window.location.href}`}
+            className="inline-flex items-center justify-center  w-10 h-10 rounded-full border border-indigo-600  bg-indigo-600  text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+            target="_blank"
+          >
+            <FaWhatsapp size={20} />
+          </a>
+
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}
+            className="inline-flex items-center justify-center  w-10 h-10 rounded-full border border-indigo-600  bg-indigo-600   text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+            target="_blank"
+          >
+            <FaFacebook size={20} />
+          </a>
+          <a
+            href={`https://twitter.com/intent/tweet?url=[URL]&text=${window.location.href}`}
+            className="inline-flex items-center justify-center w-10 h-10 rounded-full border border-indigo-600   bg-indigo-600   text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+            target="_blank"
+          >
+            <FaXTwitter size={20} />
+          </a>
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
+            className="inline-flex items-center  justify-center w-10 h-10 rounded-full border border-indigo-600   bg-indigo-600  text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+            target="_blank"
+          >
+            <FaLinkedin size={20} />
+          </a>
+          <a
+            href={`mailto:${userDetails?.providerUid}.com?subject="SimpleShareProfile"&body=${window.location.href}`}
+            className="inline-flex items-center  justify-center w-10 h-10 rounded-full border border-indigo-600   bg-indigo-600  text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+          >
+            <FaEnvelopeOpen size={20} />
+          </a>
+        </div>
+      </div>
+      {/* Social Share  End*/}
     </>
   );
 };
