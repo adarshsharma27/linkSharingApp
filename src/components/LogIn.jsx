@@ -257,7 +257,7 @@ const LogIn = () => {
               </div>
               <div className="flex items-center justify-between">
                 <button
-                  className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  className="inline-flex items-center gap-2 rounded border border-gray-700 bg-gray-700 px-8 py-3 text-white hover:bg-transparent hover:text-gray-900 focus:outline-none focus:ring active:text-gray-500"
                   onClick={loginAsGuest}
                 >
                   <span className="text-sm font-medium">
