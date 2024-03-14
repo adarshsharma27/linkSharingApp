@@ -12,6 +12,7 @@
     "Please Enter Password": "Please Enter Password",
     "logInButton": "LogIn",
     "signUpButton": "SignUp",
+    "guestLogInButton":"LogIn As Guest",
     "footerTitle": "@Copyright2024SimpleShare",
     "linksTitle": "Customize Your Links!",
     "linksHeader": "Add  Social Links to Profile",
