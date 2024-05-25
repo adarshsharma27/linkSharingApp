@@ -1,6 +1,6 @@
 # Social Profile Links Sharing App
 ---
-Social Profile Links Sharing App ReactJs
+Full Stack Application with ReactJs + AppWrite)
 ---
 > ![Website](public/images/screenshotapp.png)
 > ![Website](public/images/screenshotapp2.png)
