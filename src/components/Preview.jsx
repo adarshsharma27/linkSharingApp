@@ -247,12 +247,12 @@ const Preview = () => {
       <div
         className={
           share === true
-            ? "rounded-lg md:px-8  px-4 py-4 text-center bg-white  card-shadow-custom fixed top-[5rem] right-0  transition-all duration-2000 ease-in-out"
-            : "rounded-lg md:px-8 px-4 py-4 text-center bg-white  card-shadow-custom transition-all duration-2000 ease-in-out fixed top-[5rem] right-[-400px]"
+            ? "rounded-lg md:px-8  px-4 py-4 text-center bg-white  card-shadow-custom fixed top-[5rem] right-0  transition-all duration-2000 ease-in-out  dark:shadow-2xl dark:bg-[#313E51] "
+            : "rounded-lg md:px-8 px-4 py-4 text-center bg-white card-shadow-custom transition-all duration-2000 ease-in-out fixed top-[5rem] right-[-400px] dark:shadow-2xl dark:bg-[#313E51] "
         }
       >
         <div className="md:flex md:items-center md:justify-between  py-2">
-          <h3 className="md:text-lg md:block hidden text-base text-gray-700 font-poppins font-bold dark:text-gray-400">
+          <h3 className="md:text-lg md:block hidden text-base text-gray-700 font-poppins font-bold dark:text-gray-200">
             Share this Profile Via
           </h3>
           <div
