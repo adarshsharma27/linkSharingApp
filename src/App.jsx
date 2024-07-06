@@ -11,6 +11,7 @@ import DashBoard from "./components/DashBoard";
 import ProtectedRoutes from "./ProtectedRoutes";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { account } from "./conf/config";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -28,7 +29,12 @@ function App() {
       localStorage.setItem("mode", false);
     }
   }, []);
-
+  useEffect(() => {
+    const deletePreviousSession = async () => {
+      await account.deleteSession("current");
+    };
+    deletePreviousSession();
+  }, []);
   const addDarkMode = () => {
     let darkmode = document.querySelector("html");
     darkmode.classList.toggle("dark");

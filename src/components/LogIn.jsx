@@ -35,7 +35,7 @@ const LogIn = () => {
       setEmailErr(false);
     } else {
       try {
-        const userData = await account.createEmailSession(email, password);
+        const userData = await account.createEmailPasswordSession(email, password);
         dispatch(logIn(userData));
         toast.success("LoggedIn Successfully", {
           duration: 4000,
@@ -83,7 +83,7 @@ const LogIn = () => {
     setEmail(conf.guestUserEmail);
     setPassword(conf.guestUserPassword);
     try {
-      const userData = await account.createEmailSession(
+      const userData = await account.createEmailPasswordSession(
         conf.guestUserEmail,
         conf.guestUserPassword
       );
